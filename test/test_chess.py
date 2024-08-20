@@ -22,6 +22,10 @@ class TestChess(unittest.TestCase):
         self.__game__.move(0, 0, 1, 0)  # Mueve una pieza
         self.assertEqual(self.__game__.turn, "BLACK", "El turno debe cambiar a negro después de un movimiento")
 
+# Me aseguro que después de mover una pieza negra, siga una pieza blanca
+        self.__game__.move(7, 0, 6, 0)  
+        self.assertEqual(self.__game__.turn, "WHITE", "El turno debe cambiar a blanco después de otro movimiento")
 
+                         
 if __name__ == '__main__':
     unittest.main()
