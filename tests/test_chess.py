@@ -13,18 +13,24 @@ class TestChess(unittest.TestCase):
     def setUp(self):
         self.__game__ = Chess()
 
+# Asegura que el juego esté en marcha cuando se llama al método is_playing
+    def test_is_playing(self):
+        self.assertTrue(self.__game__.is_playing(), "El juego debería estar en curso")
+
 #Verifica que el turno incial sea de las piezas blancas, casa contrario se mostrará un mensaje indicando el error
     def test_initial_turn(self):
         self.assertEqual(self.__game__.turn, "WHITE" , "El turno inicial debe ser de las piezas blancas")
 
 #Me aseguro de que el turno cambia de "WHITE" a "BLACK" después de un movimiento.
-#     def test_turn_sequence(self):
-#         self.__game__.move(0, 0, 1, 0)  # Mueve una pieza
-#         self.assertEqual(self.__game__.turn, "BLACK", "El turno debe cambiar a negro después de un movimiento")
+    def test_turn_sequence(self):
+         self.__game__.move(0, 0, 1, 0)  # Mueve una pieza
+         self.assertEqual(self.__game__.turn, "BLACK", "El turno debe cambiar a negro después de un movimiento")
 
 # # Me aseguro que después de mover una pieza negra, siga una pieza blanca
-#         self.__game__.move(7, 0, 6, 0)  
-#         self.assertEqual(self.__game__.turn, "WHITE", "El turno debe cambiar a blanco después de otro movimiento")
+         self.__game__.move(7, 0, 6, 0)  
+         self.assertEqual(self.__game__.turn, "WHITE", "El turno debe cambiar a blanco después de otro movimiento")
+
+
 
                          
 if __name__ == '__main__':
