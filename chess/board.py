@@ -7,6 +7,7 @@ from chess.piezas.pawn import Pawn
 
 #Creo un tablero vacío de 8x8 
 #Utilizo un método para configurar la torre, caballo, alfíl, reina, rey y peón colocandolos en el tablero
+#(Defino las posiciones en el tablero de las piezas blancas y negras)
 class Board:
     def __init__(self):
         self.__positions__ = [[None for _ in range(8)] for _ in range(8)]
