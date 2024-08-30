@@ -1,8 +1,8 @@
 import unittest
 from chess.board import Board
-#from chess.piezas.rook import Rook
-#from chess.piezas.knight import Knight
-#from chess.piezas.bishop import Bishop
+from chess.piezas.rook import Rook
+from chess.piezas.knight import Knight
+from chess.piezas.bishop import Bishop
 #from chess.piezas.queen import Queen
 #from chess.piezas.king import King
 #from chess.piezas.pawn import Pawn
@@ -24,6 +24,16 @@ class TestBoard(unittest.TestCase):
                 "♜♞♝♛♚♝♞♜\n"
             )
         )
+#Verifica que las piezas de ajedrez en la clase "Board" se inicien y coloquen correctamente en sus posiciones correspondientes en el tablero
+    def test_get_piece(self):
+        board = Board()
+        rook = board.get_piece(0, 0)
+        knight = board.get_piece(0, 1)
+        bishop = board.get_piece(0, 2)
+
+        self.assertIsInstance(rook, Rook)
+        self.assertIsInstance(knight, Knight)
+        self.assertIsInstance(bishop, Bishop)
 
 # Asegura que el tablero de ajedrez esté bien iniciado y que los casilleros que deberían estar vacíos no contienen ninguna pieza
     def test_empty_square(self):
