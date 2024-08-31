@@ -1,8 +1,9 @@
-#class InvalidMoveNoPiece(InvalidMove):
-#    ...
+class InvalidMove(Exception):
+    pass
 
-#class InvalidMoveRookMove(InvalidMove):
-#    ...
+class InvalidMoveNoPiece(InvalidMove):
+   ...
 
-#class InvalidMove(Exception):
-#    pass
+class InvalidMoveRookMove(InvalidMove):
+    ...
+
