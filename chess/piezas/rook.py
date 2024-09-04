@@ -12,3 +12,30 @@ class Rook(Piece):
 
     def __str__(self):
         return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
+
+    
+    """def possible_positions_vd(self, x, y):
+        positions = []
+        for i in range(x + 1, 8):
+            piece_at_position = self.__board__.get_piece(i, y)
+            if piece_at_position is None:
+                positions.append((i, y))
+            elif piece_at_position.__color__ != self.__board__.get_piece(x, y).__color__:
+                positions.append((i, y))
+                break
+            else:
+                break
+        return positions
+    
+    def possible_positions_va(self, x, y):
+        positions = []
+        for i in range(x - 1, -1, -1):
+            piece_at_position = self.__board__.get_piece(i, y)
+            if piece_at_position is None:
+                positions.append((i, y))
+            elif piece_at_position.__color__ != self.__board__.get_piece(x, y).__color__:
+                positions.append((i, y))
+                break
+            else:
+                break
+        return positions"""

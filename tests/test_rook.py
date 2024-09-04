@@ -1,9 +1,10 @@
 import unittest
 from chess.piezas.rook import Rook
+from chess.board import Board
 
 class TestRook(unittest.TestCase):
 
-#Verifico la torre blanca (si quisiera testear solo el aspecto visual, sería suficiente con la pieza blanca)
+#Verifico +la torre blanca (si quisiera testear solo el aspecto visual, sería suficiente con la pieza blanca)
     def test_str(self):
         rook_white = Rook("WHITE")
         self.assertEqual(
@@ -17,6 +18,20 @@ class TestRook(unittest.TestCase):
             "♖",  # Símbolo para la torre negra
         )
 
-if __name__ == '__main__':
-    unittest.main()
+    """def test_move_vertical_desc_white(self):
+        board = Board()
+        rook = Rook("WHITE", board)
+        possibles = rook.possible_positions_vd(4, 1)
+        self.assertEqual(
+            possibles,
+            [(5, 1), (6, 1), (7, 1)]
+        )
 
+    def test_move_vertical_asc_white(self):
+        board = Board()
+        rook = Rook("WHITE", board)
+        possibles = rook.possible_positions_va(4, 1)
+        self.assertEqual(
+            possibles,
+            [(3, 1), (2, 1), (1, 1), (0, 1)]
+        )"""

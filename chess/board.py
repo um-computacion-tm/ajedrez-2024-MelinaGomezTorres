@@ -65,3 +65,11 @@ class Board:
     
     def get_piece(self, row, col):
         return self.__positions__[row][col]
+    
+    def set_piece(self, row, col, piece):
+        self.__positions__[row][col] = piece
+
+    def move(self, from_row, from_col, to_row, to_col):
+        origin = self.get_piece(from_row, from_col)
+        self.set_piece(to_row, to_col, origin)
+        self.set_piece(from_row, from_col, None)

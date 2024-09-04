@@ -2,7 +2,7 @@
 #Importo más clases (Board y Piece)
 import unittest
 from chess.chess import Chess
-# from chess.board import Board
+#from chess.board import Board
 # from chess.piece import Piece
 #Creo la clase correspondiente para este test 
 # Entro de setUp (se ejecuta automáticamente antes de cada prueba para asegurar que estas no se repitan)
@@ -29,6 +29,14 @@ class TestChess(unittest.TestCase):
 # # Me aseguro que después de mover una pieza negra, siga una pieza blanca
          self.__game__.move(7, 0, 6, 0)  
          self.assertEqual(self.__game__.turn, "WHITE", "El turno debe cambiar a blanco después de otro movimiento")
+
+#Se compara el turno actual con el turno guardado antes de la acción. Si son iguales, el test pasa, sino, el test falla con el mensaje especificado
+    def test_turn_unchanged(self):
+        initial_turn = self.__game__.turn
+        self.__game__.is_playing()  # Acción que no debería cambiar el turno
+        self.assertEqual(self.__game__.turn, initial_turn, "El turno no debería cambiar al llamar a is_playing()")
+
+
 
 
 
