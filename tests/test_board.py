@@ -6,6 +6,7 @@ from chess.piezas.bishop import Bishop
 from chess.piezas.queen import Queen
 from chess.piezas.king import King
 from chess.piezas.pawn import Pawn
+from chess.exceptions import OutOfBoard
 
 #Secuencia de caracteres representa el tablero de ajedrez en su posición inicial
 class TestBoard(unittest.TestCase):
@@ -46,6 +47,44 @@ class TestBoard(unittest.TestCase):
         board = Board()
         empty_square = board.get_piece(4, 4)
         self.assertIsNone(empty_square)
+
+    def test_move(self):
+        board = Board()  # Elimina 'for_test=True' si no es necesario
+        rook = Rook(color='BLACK')  # Elimina 'board=board' si no lo necesitas
+
+        board.set_piece(0, 0, rook)  # Coloca la torre negra en la posición inicial
+
+    # Mueve la torre de (0,0) a (0,1)
+        board.move(from_row=0, from_col=0, to_row=0, to_col=1)
+
+    # Verifica que la torre esté en la nueva posición
+        self.assertIsInstance(board.get_piece(0, 1), Rook)
+
+    # Verifica que la representación del tablero sea correcta
+        self.assertEqual(
+            str(board),
+        (
+            " ♖♗♕♔♗♘♖\n"
+            "♙♙♙♙♙♙♙♙\n"
+            "        \n"
+            "        \n"
+            "        \n"
+            "        \n"
+            "♟♟♟♟♟♟♟♟\n"
+            "♜♞♝♛♚♝♞♜\n"
+        )
+    )
+    def test_get_piece_out_of_range(self):
+        board = Board()  # Elimina 'for_test=True' si no es necesario
+        with self.assertRaises(OutOfBoard) as exc:
+            board.get_piece(10, 10)  # Intenta acceder a una posición fuera de los límites
+
+        self.assertEqual(
+            str(exc.exception),  # Compara el mensaje de la excepción directamente
+        "La posicion indicada se encuentra fuera del tablero"
+    )
+
+
                          
 if __name__ == '__main__':
     unittest.main()

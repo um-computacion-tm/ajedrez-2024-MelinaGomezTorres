@@ -4,12 +4,13 @@ from chess.piezas.bishop import Bishop
 from chess.piezas.queen import Queen
 from chess.piezas.king import King
 from chess.piezas.pawn import Pawn
+from chess.exceptions import OutOfBoard
 
 #Creo un tablero vacío de 8x8 
 #Utilizo un método para configurar la torre, caballo, alfíl, reina, rey y peón colocandolos en el tablero
 #(Defino las posiciones en el tablero de las piezas blancas y negras)
 class Board:
-    def __init__(self):
+    def __init__(self, for_test=False ):
         self.__positions__ = [[None for _ in range(8)] for _ in range(8)]
         self.__initialize_pieces()
 
@@ -64,6 +65,9 @@ class Board:
         return board_str
     
     def get_piece(self, row, col):
+        # Verifica que las coordenadas estén dentro de los límites del tablero
+        if row < 0 or row >= len(self.__positions__) or col < 0 or col >= len(self.__positions__[0]):
+            raise OutOfBoard("La posición indicada se encuentra fuera del tablero")
         return self.__positions__[row][col]
     
     def set_piece(self, row, col, piece):

@@ -7,7 +7,8 @@ class Rook(Piece):
     __black_symbol__ = "♖"
 
 # Llama al constructor de la clase base con el color (en referencia a "piece.py")
-    def __init__(self, color):
+    def __init__(self, color,board=None):
+        self.__board__ = board
         super().__init__(color)
 
     def __str__(self):
