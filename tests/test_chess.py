@@ -26,7 +26,7 @@ class TestChess(unittest.TestCase):
          self.__game__.move(0, 0, 1, 0)  # Mueve una pieza
          self.assertEqual(self.__game__.turn, "BLACK", "El turno debe cambiar a negro después de un movimiento")
 
-# # Me aseguro que después de mover una pieza negra, siga una pieza blanca
+#Me aseguro que después de mover una pieza negra, siga una pieza blanca
          self.__game__.move(7, 0, 6, 0)  
          self.assertEqual(self.__game__.turn, "WHITE", "El turno debe cambiar a blanco después de otro movimiento")
 
@@ -35,6 +35,16 @@ class TestChess(unittest.TestCase):
         initial_turn = self.__game__.turn
         self.__game__.is_playing()  # Acción que no debería cambiar el turno
         self.assertEqual(self.__game__.turn, initial_turn, "El turno no debería cambiar al llamar a is_playing()")
+
+#Verifica que el turno de los jugadores no cambia cuando se realiza un movimiento inválido
+    def test_turn_unchanged_after_invalid_move(self):
+        initial_turn = self.__game__.turn
+        try:
+            self.__game__.move(10, 10, 11, 11)  # Movimiento inválido de ejemplo
+        except Exception:
+            pass
+        self.assertEqual(self.__game__.turn, initial_turn, "El turno no debería cambiar después de un movimiento inválido")
+
 
 
 
