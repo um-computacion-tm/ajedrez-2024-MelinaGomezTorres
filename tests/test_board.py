@@ -49,8 +49,8 @@ class TestBoard(unittest.TestCase):
         self.assertIsNone(empty_square)
 
     def test_move(self):
-        board = Board()  # Elimina 'for_test=True' si no es necesario
-        rook = Rook(color='BLACK')  # Elimina 'board=board' si no lo necesitas
+        board = Board()  
+        rook = Rook(color='BLACK') 
 
         board.set_piece(0, 0, rook)  # Coloca la torre negra en la posición inicial
 
@@ -75,7 +75,7 @@ class TestBoard(unittest.TestCase):
         )
     )
     def test_get_piece_out_of_range(self):
-        board = Board()  # Elimina 'for_test=True' si no es necesario
+        board = Board()  
         with self.assertRaises(OutOfBoard) as exc:
             board.get_piece(10, 10)  # Intenta acceder a una posición fuera de los límites
 
@@ -83,8 +83,20 @@ class TestBoard(unittest.TestCase):
             str(exc.exception),  # Compara el mensaje de la excepción directamente
         "La posicion indicada se encuentra fuera del tablero"
     )
+        
+    def test_capture_piece(self):
+        board = Board()
+
+        # Se coloca una torre blanca en (0, 0) y un peón negro en (0, 1)
+        board.set_piece(0, 0, Rook(color='WHITE'))
+        board.set_piece(0, 1, Pawn(color='BLACK'))
+
+        # La torre blanca se mueve a (0, 1) y se "come" al peón negro
+        board.move(0, 0, 0, 1)
 
 
+
+    
                          
 if __name__ == '__main__':
     unittest.main()
