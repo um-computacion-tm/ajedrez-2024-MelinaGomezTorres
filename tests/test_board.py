@@ -94,6 +94,16 @@ class TestBoard(unittest.TestCase):
         # La torre blanca se mueve a (0, 1) y se "come" al peón negro
         board.move(0, 0, 0, 1)
 
+       # Verifica que la torre blanca esté en la nueva posición (0, 1)
+        self.assertIsInstance(board.get_piece(0, 1), Rook)
+
+        # Verifica que la pieza en la posición de origen (0, 0) ahora esté vacía
+        self.assertIsNone(board.get_piece(0, 0))
+
+        # Verifica que la pieza capturada ya no esté en el tablero
+        self.assertNotIsInstance(board.get_piece(0, 1), Pawn)
+
+
 
 
     
