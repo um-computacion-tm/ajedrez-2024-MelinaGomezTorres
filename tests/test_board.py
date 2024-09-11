@@ -25,6 +25,10 @@ class TestBoard(unittest.TestCase):
                 "♜♞♝♛♚♝♞♜\n"
             )
         )
+
+    def setUp(self):
+        self.board = Board()
+        
 #Verifica que las piezas de ajedrez en la clase "Board" se inicien y coloquen correctamente en sus posiciones correspondientes en el tablero
     def test_get_piece(self):
         board = Board()
