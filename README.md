@@ -1,7 +1,8 @@
 # ajedrez-2024-MelinaGomezTorres
-ajedrez-2024-MelinaGomezTorres created by GitHub Classroom
 
 Proyecto de ajedrez diseñado por la alumna Melina Abril Gomez Torres.
+
+# Legajo
 Legajo: 63211
 
 # CircleCi
