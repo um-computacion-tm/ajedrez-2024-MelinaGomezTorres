@@ -25,7 +25,9 @@ class Bishop(Piece):
          possible_positions = (
             # movimientos diagonales
             self.possible_positions_dtr(from_row, from_col) +
-            self.possible_positions_dtl(from_row, from_col) 
+            self.possible_positions_dtl(from_row, from_col) +
+            self.possible_positions_dbr(from_row, from_col) +
+            self.possible_positions_dbl(from_row, from_col)
          )
          return (to_row, to_col) in possible_positions
     
@@ -56,5 +58,35 @@ class Bishop(Piece):
                 break
             possibles.append((next_row, next_col))
             next_row -= 1
+            next_col -= 1
+        return possibles
+    
+    def possible_positions_dbr(self, row, col):
+        # diagonal bottom-right (movimiento hacia abajo a la derecha)
+        possibles = []
+        next_row, next_col = row + 1, col + 1
+        while next_row < 8 and next_col < 8:
+            other_piece = self.__board__.get_piece(next_row, next_col)
+            if other_piece is not None:
+                if other_piece.__color__ != self.__color__:
+                    possibles.append((next_row, next_col))
+                break
+            possibles.append((next_row, next_col))
+            next_row += 1
+            next_col += 1
+        return possibles
+
+    def possible_positions_dbl(self, row, col):
+        # diagonal bottom-left (movimiento hacia abajo a la izquierda)
+        possibles = []
+        next_row, next_col = row + 1, col - 1
+        while next_row < 8 and next_col >= 0:
+            other_piece = self.__board__.get_piece(next_row, next_col)
+            if other_piece is not None:
+                if other_piece.__color__ != self.__color__:
+                    possibles.append((next_row, next_col))
+                break
+            possibles.append((next_row, next_col))
+            next_row += 1
             next_col -= 1
         return possibles
