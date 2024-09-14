@@ -21,35 +21,35 @@ class Board:
          self.__setup_royalty()
          self.__setup_pawns()
 
-
+#Incluyo self como segundo argumento
     def __setup_rooks(self):                           #Torre
-        self.__positions__[0][0] = Rook("BLACK")
-        self.__positions__[0][7] = Rook("BLACK")
+        self.__positions__[0][0] = Rook("BLACK", self)
+        self.__positions__[0][7] = Rook("BLACK", self)
         self.__positions__[7][0] = Rook("WHITE")
         self.__positions__[7][7] = Rook("WHITE")
 
     def __setup_knights(self):                         #Caballo
-        self.__positions__[0][1] = Knight("BLACK")
-        self.__positions__[0][6] = Knight("BLACK")
-        self.__positions__[7][1] = Knight("WHITE")
-        self.__positions__[7][6] = Knight("WHITE")
+        self.__positions__[0][1] = Knight("BLACK", self)
+        self.__positions__[0][6] = Knight("BLACK", self)
+        self.__positions__[7][1] = Knight("WHITE", self)
+        self.__positions__[7][6] = Knight("WHITE", self)
 
     def __setup_bishops(self):                         #Alfíl
-        self.__positions__[0][2] = Bishop("BLACK")
-        self.__positions__[0][5] = Bishop("BLACK")
-        self.__positions__[7][2] = Bishop("WHITE")
-        self.__positions__[7][5] = Bishop("WHITE")
+        self.__positions__[0][2] = Bishop("BLACK", self)
+        self.__positions__[0][5] = Bishop("BLACK", self)
+        self.__positions__[7][2] = Bishop("WHITE", self)
+        self.__positions__[7][5] = Bishop("WHITE", self)
         
     def __setup_royalty(self):                         #Reina y Rey
-        self.__positions__[0][3] = Queen("BLACK")
-        self.__positions__[0][4] = King("BLACK")
-        self.__positions__[7][3] = Queen("WHITE")
-        self.__positions__[7][4] = King("WHITE")
+        self.__positions__[0][3] = Queen("BLACK", self)
+        self.__positions__[0][4] = King("BLACK", self)
+        self.__positions__[7][3] = Queen("WHITE", self)
+        self.__positions__[7][4] = King("WHITE", self)
 
     def __setup_pawns(self):                           #Peón
         for i in range(8):
-            self.__positions__[1][i] = Pawn("BLACK")
-            self.__positions__[6][i] = Pawn("WHITE")
+            self.__positions__[1][i] = Pawn("BLACK", self)
+            self.__positions__[6][i] = Pawn("WHITE", self)
 
 
     def __str__(self):

@@ -8,8 +8,8 @@ class Rook(Piece):
 
 #Llama al constructor de la clase base con el color (en referencia a "piece.py")
     def __init__(self, color,board=None):
-        self.__board__ = board
-        super().__init__(color)
+        super().__init__(color, board)
+
 
     def __str__(self):
        return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
@@ -52,6 +52,9 @@ class Rook(Piece):
                 break  
             possibles.append((next_row, col))
         return possibles
+    
+
+    
     
     
     
