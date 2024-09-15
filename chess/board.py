@@ -21,12 +21,12 @@ class Board:
          self.__setup_royalty()
          self.__setup_pawns()
 
-#Incluyo self como segundo argumento
+#Incluyo self como segundo argumento 
     def __setup_rooks(self):                           #Torre
         self.__positions__[0][0] = Rook("BLACK", self)
         self.__positions__[0][7] = Rook("BLACK", self)
-        self.__positions__[7][0] = Rook("WHITE")
-        self.__positions__[7][7] = Rook("WHITE")
+        self.__positions__[7][0] = Rook("WHITE", self)
+        self.__positions__[7][7] = Rook("WHITE", self)
 
     def __setup_knights(self):                         #Caballo
         self.__positions__[0][1] = Knight("BLACK", self)

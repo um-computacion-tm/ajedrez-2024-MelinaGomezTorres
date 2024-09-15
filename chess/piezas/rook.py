@@ -24,7 +24,9 @@ class Rook(Piece):
          possible_positions = (
             #movimientos horizontales y verticales
             self.possible_positions_vd(from_row, from_col) +
-            self.possible_positions_va(from_row, from_col) 
+            self.possible_positions_va(from_row, from_col) +
+            self.possible_positions_hr(from_row, from_col) + 
+            self.possible_positions_hl(from_row, from_col) 
             )
          return (to_row, to_col) in possible_positions
      
@@ -53,6 +55,30 @@ class Rook(Piece):
             possibles.append((next_row, col))
         return possibles
     
+    def possible_positions_hr(self, row, col):
+        # Horizontal derecha (moverse hacia la derecha en la misma fila)
+        possibles = []
+        for next_col in range(col + 1, 8):  # Desde la columna actual hasta la columna 7
+            other_piece = self.__board__.get_piece(row, next_col)
+            if other_piece is not None:
+               if other_piece.__color__ != self.__color__:
+                  possibles.append((row, next_col))
+               break  # Se detiene el movimiento si se encuentra cualquier pieza
+            possibles.append((row, next_col))
+        return possibles
+
+
+    def possible_positions_hl(self, row, col):
+        # Horizontal izquierda (moverse hacia la izquierda en la misma fila)
+        possibles = []
+        for next_col in range(col - 1, -1, -1):  # Hasta la columna 0
+            other_piece = self.__board__.get_piece(row, next_col)
+            if other_piece is not None:
+               if other_piece.__color__ != self.__color__:
+                    possibles.append((row, next_col))
+               break
+            possibles.append((row, next_col))
+        return possibles
 
     
     
