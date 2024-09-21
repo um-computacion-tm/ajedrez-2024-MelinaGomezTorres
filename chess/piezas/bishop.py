@@ -35,31 +35,37 @@ class Bishop(Piece):
         possibles = []
         next_row, next_col = row - 1, col + 1
         while next_row >= 0 and next_col < 8:
-            other_piece = self.__board__.get_piece(next_row, next_col)
-            if other_piece is not None:
-                if other_piece.__color__ != self.__color__:
-                    possibles.append((next_row, next_col))
-                break
-            possibles.append((next_row, next_col))
+            piece = self.__board__.get_piece(next_row, next_col)
+            if piece is None:
+                possibles.append((next_row, next_col))
+            elif piece.get_color() != self.get_color():  # Pieza del oponente
+                possibles.append((next_row, next_col))
+                break  # Detener el bucle si se encuentra una pieza del oponente
+            else:
+                break  # Detener el bucle si se encuentra una pieza del mismo color
             next_row -= 1
             next_col += 1
         return possibles
+
 
     def possible_positions_dtl(self, row, col):
         # diagonal top-left (movimiento hacia arriba a la izquierda)
         possibles = []
         next_row, next_col = row - 1, col - 1
         while next_row >= 0 and next_col >= 0:
-            other_piece = self.__board__.get_piece(next_row, next_col)
-            if other_piece is not None:
-                if other_piece.__color__ != self.__color__:
-                    possibles.append((next_row, next_col))
-                break
-            possibles.append((next_row, next_col))
+            piece = self.__board__.get_piece(next_row, next_col)
+            if piece is None:
+                possibles.append((next_row, next_col))
+            elif piece.get_color() != self.get_color():  # Pieza del oponente
+                possibles.append((next_row, next_col))
+                break  # Detener el bucle si se encuentra una pieza del oponente
+            else:
+                break  # Detener el bucle si se encuentra una pieza del mismo color
             next_row -= 1
             next_col -= 1
         return possibles
     
+
     def possible_positions_dbr(self, row, col):
         # diagonal bottom-right (movimiento hacia abajo a la derecha)
         possibles = []
@@ -73,10 +79,8 @@ class Bishop(Piece):
                 break # Detener el bucle si se encuentra una pieza
             else:
                 break # Detener el bucle si se encuentra una pieza del mismo color
-
             next_row += 1
             next_col += 1
-
         return possibles
 
 
@@ -85,12 +89,16 @@ class Bishop(Piece):
         possibles = []
         next_row, next_col = row + 1, col - 1
         while next_row < 8 and next_col >= 0:
-            other_piece = self.__board__.get_piece(next_row, next_col)
-            if other_piece is not None:
-                if other_piece.__color__ != self.__color__:
-                    possibles.append((next_row, next_col))
-                break
-            possibles.append((next_row, next_col))
+            piece = self.__board__.get_piece(next_row, next_col)
+            if piece is None:
+                possibles.append((next_row, next_col))
+            elif piece.get_color() != self.get_color():  # Pieza del oponente
+                possibles.append((next_row, next_col))
+                break  # Detener el bucle si se encuentra una pieza del oponente
+            else:
+                break  # Detener el bucle si se encuentra una pieza del mismo color
             next_row += 1
             next_col -= 1
         return possibles
+    
+    
