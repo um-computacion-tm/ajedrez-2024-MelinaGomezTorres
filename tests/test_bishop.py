@@ -58,6 +58,41 @@ class TestBishop(unittest.TestCase):
             [(5, 5)]  # El alfil debe detenerse en (5, 5) porque hay una pieza en (6, 6)
         )
 
+    # Prueba el movimiento diagonal inferior izquierda 
+    def test_move_diagonal_bottom_left(self):
+        board = Board()
+        bishop = Bishop("WHITE", board)
+        board.set_piece(4, 4, bishop)  # Coloca el alfil en (4, 4)
+
+        # Coloca una pieza enemiga en (6, 2) para bloquear el movimiento
+        pawn = Pawn("BLACK", board)
+        board.set_piece(6, 2, pawn)
+
+        possibles = bishop.possible_positions_dbl(4, 4)
+        self.assertEqual(
+            possibles,
+            [(5, 3), (6, 2)],  # El alfil debe detenerse en (6, 2) donde está la pieza enemiga
+        )
+
+    # Prueba que el alfil no puede moverse horizontalmente (movimiento inválido)
+    def test_invalid_horizontal_move(self):
+        board = Board()
+        bishop = Bishop("WHITE", board)
+        board.set_piece(4, 4, bishop)  # Coloca el alfil en (4, 4)
+        is_possible = bishop.valid_positions(4, 4, 4, 6)  # Intenta moverlo a (4, 6)
+        self.assertFalse(is_possible, "El alfil no debería poder moverse horizontalmente")
+
+    # Prueba que el alfil no puede moverse verticalmente (movimiento inválido)
+    def test_invalid_vertical_move(self):
+        board = Board()
+        bishop = Bishop("WHITE", board)
+        board.set_piece(4, 4, bishop)  # Coloca el alfil en (4, 4)
+        is_possible = bishop.valid_positions(4, 4, 6, 4)  # Intenta moverlo verticalmente a (6, 4)
+        self.assertFalse(is_possible, "El alfil no debería poder moverse verticalmente")
+
+
+
+
    
 
 
