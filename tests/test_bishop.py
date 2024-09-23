@@ -90,10 +90,29 @@ class TestBishop(unittest.TestCase):
         is_possible = bishop.valid_positions(4, 4, 6, 4)  # Intenta moverlo verticalmente a (6, 4)
         self.assertFalse(is_possible, "El alfil no debería poder moverse verticalmente")
 
+    # Prueba el movimiento con una pieza del mismo color bloqueando el camino
+    def test_move_blocked_by_own_piece(self):
+        board = Board()
+        bishop = Bishop("WHITE", board)
+        board.set_piece(4, 4, bishop)  # Coloca el alfil en (4, 4)
+        board.set_piece(2, 6, Pawn("WHITE", board))  # Coloca un peón blanco en el camino
+        possibles = bishop.possible_positions_dtr(4, 4)
+        self.assertEqual(
+            possibles,
+            [(3, 5)],  # El alfil debería moverse hasta (3, 5) y no más allá
+        )
 
-
-
-   
+    # Prueba el movimiento con una pieza enemiga bloqueando el camino
+    def test_move_blocked_by_enemy_piece(self):
+        board = Board()
+        bishop = Bishop("WHITE", board)
+        board.set_piece(4, 4, bishop)  # Coloca el alfil en (4, 4)
+        board.set_piece(2, 6, Pawn("BLACK", board))  # Coloca un peón negro en el camino
+        possibles = bishop.possible_positions_dtr(4, 4)
+        self.assertEqual(
+            possibles,
+            [(3, 5), (2, 6)],  # El alfil debería moverse hasta (2, 6), donde está el peón enemigo
+        )
 
 
 
