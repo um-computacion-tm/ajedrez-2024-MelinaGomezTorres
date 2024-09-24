@@ -114,6 +114,15 @@ class TestBishop(unittest.TestCase):
             [(3, 5), (2, 6)],  # El alfil debería moverse hasta (2, 6), donde está el peón enemigo
         )
 
+    # Prueba que el alfil no puede moverse fuera del tablero (movimiento inválido)
+    def test_move_out_of_bounds(self):
+        board = Board()
+        bishop = Bishop("WHITE", board)
+        board.set_piece(0, 0, bishop)  # Coloca el alfil en la esquina superior izquierda (0, 0)
+        is_possible = bishop.valid_positions(0, 0, -1, 1)  # Intenta moverlo fuera del tablero
+        self.assertFalse(is_possible, "El alfil no debería poder moverse fuera del tablero")
+
+
 
 
 if __name__ == "__main__":
