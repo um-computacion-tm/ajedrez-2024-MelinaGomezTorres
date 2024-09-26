@@ -57,9 +57,6 @@ class Board:
     #Se usa globals() para crear la instancia de la pieza
                 self.__positions__[x][y] = globals()[piece](color, self)
        
-        
-
-
     def __str__(self):
         
         board_str = ""
