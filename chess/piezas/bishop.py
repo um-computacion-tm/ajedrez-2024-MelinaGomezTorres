@@ -10,8 +10,8 @@ class Bishop(Piece):
     def __init__(self, color,board=None):
         super().__init__(color, board)
 
-    def __str__(self):
-        return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
+    #def __str__(self):
+     #   return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
     
     def valid_positions(
          self,
