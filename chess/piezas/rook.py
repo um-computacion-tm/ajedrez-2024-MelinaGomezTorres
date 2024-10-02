@@ -10,73 +10,34 @@ class Rook(Piece):
     def __init__(self, color,board=None):
         super().__init__(color, board)
 
-    #def __str__(self):
-     #  return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
-
-    def valid_positions(
-         self,
-         from_row,
-         from_col,
-         to_row,
-         to_col,
-   ):
-         possible_positions = (
+#Verifica si un movimiento de la torre es válido
+#Llama al método possible_positions_direction para obtener las posiciones posibles y comprueba si la posición de destino está en esa lista
+    def valid_positions(self, from_row, from_col, to_row, to_col):
+        possible_positions = (
             #movimientos horizontales y verticales
-            self.possible_positions_vd(from_row, from_col) +
-            self.possible_positions_va(from_row, from_col) +
-            self.possible_positions_hr(from_row, from_col) + 
-            self.possible_positions_hl(from_row, from_col) 
-            )
-         return (to_row, to_col) in possible_positions
-     
-    def possible_positions_vd(self, row, col):
-       #vertical descendente(moverse  hacia abajo en la misma columna)
+            self.possible_positions_direction(from_row, from_col, 1, 0) +   # Vertical descendente
+            self.possible_positions_direction(from_row, from_col, -1, 0) +  # Vertical ascendente
+            self.possible_positions_direction(from_row, from_col, 0, 1) +   # Horizontal derecha
+            self.possible_positions_direction(from_row, from_col, 0, -1)    # Horizontal izquierda
+        )
+        return (to_row, to_col) in possible_positions
+
+#Genera las posiciones posibles en una dirección específica (definida por `row_step` y `col_step`) 
+#Recorre esas posiciones hasta encontrar el borde del tablero o una pieza
+#Si encuentra una pieza del color contrario, agrega su posición a la lista; si no, se detiene
+#Luego retorna todas las posiciones válidas que puede ocupar la torre en esa dirección
+    def possible_positions_direction(self, row, col, row_step, col_step):
         possibles = []
-        for next_row in range(row + 1, 8):
-            # que la celda que sigue no este ocupada..
-            other_piece = self.__board__.get_piece(next_row, col)
+        next_row, next_col = row + row_step, col + col_step
+        while 0 <= next_row < 8 and 0 <= next_col < 8:
+            other_piece = self.__board__.get_piece(next_row, next_col)
             if other_piece is not None:
                 if other_piece.__color__ != self.__color__:
-                    possibles.append((next_row, col))
+                    possibles.append((next_row, next_col))
                 break
-            possibles.append((next_row, col))
-        return possibles
-
-    def possible_positions_va(self, row, col):
-       #vertical ascendente(se mueve hacia arriba en la misma columna)
-        possibles = []
-        for next_row in range(row - 1, -1, -1):
-            other_piece = self.__board__.get_piece(next_row, col)
-            if other_piece is not None:
-                if other_piece.__color__ != self.__color__:
-                    possibles.append((next_row, col))
-                break  
-            possibles.append((next_row, col))
-        return possibles
-    
-    def possible_positions_hr(self, row, col):
-        # Horizontal derecha (moverse hacia la derecha en la misma fila)
-        possibles = []
-        for next_col in range(col + 1, 8):  # Desde la columna actual hasta la columna 7
-            other_piece = self.__board__.get_piece(row, next_col)
-            if other_piece is not None:
-               if other_piece.__color__ != self.__color__:
-                  possibles.append((row, next_col))
-               break  # Se detiene el movimiento si se encuentra cualquier pieza
-            possibles.append((row, next_col))
-        return possibles
-
-
-    def possible_positions_hl(self, row, col):
-        # Horizontal izquierda (moverse hacia la izquierda en la misma fila)
-        possibles = []
-        for next_col in range(col - 1, -1, -1):  # Hasta la columna 0
-            other_piece = self.__board__.get_piece(row, next_col)
-            if other_piece is not None:
-               if other_piece.__color__ != self.__color__:
-                    possibles.append((row, next_col))
-               break
-            possibles.append((row, next_col))
+            possibles.append((next_row, next_col))
+            next_row += row_step
+            next_col += col_step
         return possibles
 
     
