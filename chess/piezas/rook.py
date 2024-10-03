@@ -40,6 +40,8 @@ class Rook(Piece):
             next_col += col_step
         return possibles
 
+
+
     
     
     

@@ -1,24 +1,40 @@
 import unittest
 from chess.piezas.rook import Rook
-#from chess.piezas.pawn import Pawn
-#from chess.board import Board
+from chess.board import Board
 
 class TestRook(unittest.TestCase):
 
-#Verifico +la torre blanca (si quisiera testear solo el aspecto visual, sería suficiente con la pieza blanca)
+#Verifica que el símbolo de la torre sea el correcto
     def test_str(self):
         rook_white = Rook("WHITE", None)
-        self.assertEqual(
-            str(rook_white),
-            "♜",  # Símbolo para la torre blanca        
-        )
+        self.assertEqual(str(rook_white), "♜")  # Símbolo para la torre blanca  
+        rook_black = Rook("BLACK")
+        self.assertEqual(str(rook_black), "♖")  # Símbolo para la torre negra
 
-#Verifico también las torres negras para asegurar de que el código maneja todos los colores de manera correcta
-#        rook_black = Rook("BLACK")
- #       self.assertEqual(
-  #          str(rook_black),
-   #         "♖",  # Símbolo para la torre negra
-    #    )
+    def setUp(self):
+#Configura el tablero y la torre blanca
+        self.board = Board(for_test=True)  
+        self.rook_white = Rook("WHITE", self.board)
+        self.board.set_piece(7, 0, self.rook_white)  
+        self.clear_positions(6, 0, 5, 0)
+
+    def clear_positions(self, *positions):
+#Limpia las posiciones del tablero
+        for pos in positions:
+            self.board.set_piece(pos, 0, None)
+
+    def test_rook_valid_moves(self):
+#Verifica los movimientos válidos de la torre
+        self.assertTrue(self.rook_white.valid_positions(7, 0, 5, 0))
+        self.board.set_piece(5, 0, Rook("WHITE", self.board))  
+        self.assertFalse(self.rook_white.valid_positions(7, 0, 5, 0))  
+        self.board.set_piece(6, 0, Rook("BLACK", self.board))  
+        self.assertTrue(self.rook_white.valid_positions(7, 0, 6, 0))  
+        self.assertFalse(self.rook_white.valid_positions(7, 0, 8, 0))  
+
+
+
+        
 
 
 #Prueba el movimiento vertical descendente (hacia abajo) de la torre.
@@ -125,4 +141,28 @@ class TestRook(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main() 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
