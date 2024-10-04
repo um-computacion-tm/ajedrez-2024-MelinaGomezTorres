@@ -32,6 +32,20 @@ class TestRook(unittest.TestCase):
         self.assertTrue(self.rook_white.valid_positions(7, 0, 6, 0))  
         self.assertFalse(self.rook_white.valid_positions(7, 0, 8, 0))  
 
+    def test_rook_cannot_jump_over_ally(self):
+#Verifica que la torre no puede saltar sobre piezas aliadas
+        self.board.set_piece(6, 0, Rook("WHITE", self.board))  
+        self.assertFalse(self.rook_white.valid_positions(7, 0, 5, 0))  
+
+    def test_rook_can_capture_enemy(self):
+#Verifica que la torre puede capturar piezas enemigas
+        self.board.set_piece(5, 0, Rook("BLACK", self.board))  
+        self.assertTrue(self.rook_white.valid_positions(7, 0, 5, 0))  
+
+    def test_rook_cannot_move_diagonally(self):
+#Verifica que la torre no puede moverse en diagonal
+        self.assertFalse(self.rook_white.valid_positions(7, 0, 6, 1))  
+
 
 
         
