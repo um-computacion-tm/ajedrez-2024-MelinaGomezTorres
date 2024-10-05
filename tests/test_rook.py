@@ -46,6 +46,19 @@ class TestRook(unittest.TestCase):
 #Verifica que la torre no puede moverse en diagonal
         self.assertFalse(self.rook_white.valid_positions(7, 0, 6, 1))  
 
+    def test_rook_moves_until_obstacle(self):
+#Verifica que la torre se detiene al encontrar un obstáculo
+        for i in range(6, 0, -1):
+            self.board.set_piece(i, 0, None)
+        self.assertTrue(self.rook_white.valid_positions(7, 0, 0, 0))  
+        self.board.set_piece(3, 0, Rook("WHITE", self.board))  
+        self.assertFalse(self.rook_white.valid_positions(7, 0, 0, 0))  
+
+    def test_rook_move_out_of_bounds(self):
+#Verifica movimientos fuera del tablero (fila y columna)
+        self.assertFalse(self.rook_white.valid_positions(7, 0, 9, 0))  
+        self.assertFalse(self.rook_white.valid_positions(7, 0, 7, -1))  
+
 
 
         
