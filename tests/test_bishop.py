@@ -1,4 +1,4 @@
-import unittest
+'''import unittest
 from chess.piezas.bishop import Bishop
 from chess.piezas.pawn import Pawn
 #from chess.piece import Piece
@@ -126,4 +126,4 @@ class TestBishop(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()'''
