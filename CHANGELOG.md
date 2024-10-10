@@ -1,5 +1,10 @@
 # CHANGELOG
 
+# [0.48] - 09 / 10 / 2024 - Cambios en bishop
+
+### Changed
+
+- Simplificación de la lógica del movimiento del alfil
 
 # [0.47] - 05 / 10 / 2024 - Últimos test para rook
 

@@ -1,6 +1,6 @@
-'''import unittest
+import unittest
 from chess.piezas.bishop import Bishop
-from chess.piezas.pawn import Pawn
+#from chess.piezas.pawn import Pawn
 #from chess.piece import Piece
 from chess.board import Board
 
@@ -9,18 +9,25 @@ class TestBishop(unittest.TestCase):
 
     # Verifica que el símbolo del alfil sea el correcto según el color
     def test_str(self):
-        bishop_white = Bishop("WHITE", None)
-        bishop_black = Bishop("BLACK", None)
-        self.assertEqual(
-            str(bishop_white),
-            "♝",  # Símbolo para el alfil blanco
-        )
-        self.assertEqual(
-            str(bishop_black),
-            "♗",  # Símbolo para el alfil negro
-        )
+        self.assertEqual(str(self.bishop_white),"♝")   # Símbolo para el alfil blanco
+        bishop_black = Bishop("BLACK")
+        self.assertEqual(str(bishop_black),"♗")        # Símbolo para el alfil negro
 
-    # Prueba el movimiento diagonal superior derecha 
+
+    def setUp(self):
+        # Configura el tablero y el alfil blanco
+        self.board = Board(for_test=True)
+        self.bishop_white = Bishop("WHITE", self.board)
+        self.board.set_piece(4, 4, self.bishop_white)  # Ubicación inicial del alfil
+
+    def test_bishop_valid_moves(self):
+        # Verifica los movimientos válidos del alfil
+        self.assertTrue(self.bishop_white.valid_positions_in_bishop(4, 4, 5, 5))  # Movimiento válido diagonal
+        self.assertTrue(self.bishop_white.valid_positions_in_bishop(4, 4, 3, 3))  # Movimiento válido diagonal
+        self.assertFalse(self.bishop_white.valid_positions_in_bishop(4, 4, 5, 4))  # Movimiento no válido (horizontal)
+        self.assertFalse(self.bishop_white.valid_positions_in_bishop(4, 4, 4, 5))  # Movimiento no válido (vertical)
+
+'''    # Prueba el movimiento diagonal superior derecha 
     def test_move_diagonal_top_right(self):
         board = Board()
         bishop = Bishop("WHITE", board)
@@ -127,3 +134,8 @@ class TestBishop(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()'''
+
+
+
+
+
