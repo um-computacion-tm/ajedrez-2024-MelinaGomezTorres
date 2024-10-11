@@ -1,5 +1,16 @@
 # CHANGELOG
 
+# [0.49] - 10 / 10 / 2024 - Cambios en test del bishop + nuevos test
+
+### Changed
+
+- Cambios en el método str de rook
+
+### Added
+
+- Configuración del tablero y el alfil blanca (método setUp)
+- Test de movimientos válidos del alfil
+
 # [0.48] - 09 / 10 / 2024 - Cambios en bishop
 
 ### Changed
