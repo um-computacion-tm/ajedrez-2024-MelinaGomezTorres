@@ -19,6 +19,14 @@ class Piece:
     def valid_positions(self, from_row, from_col, to_row, to_col):
         possible_positions = self.get_possible_positions(from_row, from_col)
         return (to_row, to_col) in possible_positions
+    
+    def is_valid_move(self, to_row, to_col, possible_positions):
+    #Verifica si la posición de destino es válida
+        return (to_row, to_col) in possible_positions
+
+    def get_possible_positions(self, from_row, from_col):
+    #Este método será sobrescrito por las subclases
+        return []
 
     def possible_diagonal_positions(self, from_row, from_col):
         # Llama al método genérico para las 4 direcciones diagonales
@@ -55,11 +63,11 @@ class Piece:
         return possibles
 
     # Método general que combina movimientos ortogonales y diagonales si es necesario
-    def get_possible_positions(self, from_row, from_col):
-        return (
-            self.possible_orthogonal_positions(from_row, from_col) +
-            self.possible_diagonal_positions(from_row, from_col)
-        )
+    #def get_possible_positions(self, from_row, from_col):
+     #   return (
+      #      self.possible_orthogonal_positions(from_row, from_col) +
+       #     self.possible_diagonal_positions(from_row, from_col)
+        #)
 
 
     

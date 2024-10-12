@@ -13,14 +13,23 @@ class Bishop(Piece):
     #def __str__(self):
      #   return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
     
-    def valid_positions_in_bishop(self, from_row, from_col, to_row, to_col,):
-        possible_positions = (
-            self.possible_positions_in_direction(from_row, from_col, 1, 1) +         # Diagonal hacia abajo a la derecha
-            self.possible_positions_in_direction(from_row, from_col, 1, -1) +        # Diagonal hacia abajo a la izquierda
-            self.possible_positions_in_direction(from_row, from_col, -1, 1) +        # Diagonal hacia arriba a la derecha
-            self.possible_positions_in_direction(from_row, from_col, -1, -1)         # Diagonal hacia arriba a la izquierda
-         )
-        return (to_row, to_col) in possible_positions
+    #def valid_positions_in_bishop(self, from_row, from_col, to_row, to_col,):
+     #   possible_positions = (
+      #      self.possible_positions_in_direction(from_row, from_col, 1, 1) +         # Diagonal hacia abajo a la derecha
+       #     self.possible_positions_in_direction(from_row, from_col, 1, -1) +        # Diagonal hacia abajo a la izquierda
+        #    self.possible_positions_in_direction(from_row, from_col, -1, 1) +        # Diagonal hacia arriba a la derecha
+         #   self.possible_positions_in_direction(from_row, from_col, -1, -1)         # Diagonal hacia arriba a la izquierda
+         #)
+        #return (to_row, to_col) in possible_positions
+
+    def get_possible_positions(self, from_row, from_col):
+        return self.possible_diagonal_positions(from_row, from_col)
+
+    def valid_positions_in_bishop(self, from_row, from_col, to_row, to_col):
+        possible_positions = self.get_possible_positions(from_row, from_col)
+        return self.is_valid_move(to_row, to_col, possible_positions)
+
+
     
     #def possible_positions_dtr(self, row, col):
         # diagonal top-right (movimiento hacia arriba a la derecha)
