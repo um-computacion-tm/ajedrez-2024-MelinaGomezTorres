@@ -17,8 +17,9 @@ class Piece:
     
     #Determina si un movimiento propuesto para una pieza es permitido o no según las reglas de la pieza específica y el tablero
     def valid_positions(self, from_row, from_col, to_row, to_col):
+    #Método genérico para validar posiciones
         possible_positions = self.get_possible_positions(from_row, from_col)
-        return (to_row, to_col) in possible_positions
+        return self.is_valid_move(to_row, to_col, possible_positions)
     
     def is_valid_move(self, to_row, to_col, possible_positions):
     #Verifica si la posición de destino es válida

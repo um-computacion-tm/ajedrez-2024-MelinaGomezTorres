@@ -8,8 +8,7 @@ class Pawn(Piece):
         self.__white_symbol__ = "♟"
         self.__black_symbol__ = "♙"
 
-    '''def __init__(self, color, board=None):
-        super().__init__(color, board)  # Pasar 'board' al constructor de la clase base'''
+
 
 
 

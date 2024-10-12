@@ -26,8 +26,9 @@ class Rook(Piece):
         return self.possible_orthogonal_positions(from_row, from_col)
     
     def valid_positions_in_rook(self, from_row, from_col, to_row, to_col):
-        possible_positions = self.get_possible_positions(from_row, from_col)
-        return self.is_valid_move(to_row, to_col, possible_positions)
+        return self.valid_positions(from_row, from_col, to_row, to_col)
+
+    
 
 #Genera las posiciones posibles en una dirección específica (definida por `row_step` y `col_step`) 
 #Recorre esas posiciones hasta encontrar el borde del tablero o una pieza
