@@ -92,8 +92,8 @@ class TestBoard(unittest.TestCase):
         board = Board()
 
         # Se coloca una torre blanca en (0, 0) y un peón negro en (0, 1)
-        board.set_piece(0, 0, Rook(color='WHITE'))
-        board.set_piece(0, 1, Pawn(color='BLACK'))
+        board.set_piece(0, 0, Rook(color='WHITE', board=board))
+        board.set_piece(0, 1, Pawn(color='BLACK', board=board))
 
         # La torre blanca se mueve a (0, 1) y se "come" al peón negro
         board.move(0, 0, 0, 1)

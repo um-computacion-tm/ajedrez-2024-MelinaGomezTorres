@@ -12,15 +12,22 @@ class Rook(Piece):
 
 #Verifica si un movimiento de la torre es válido
 #Llama al método possible_positions_direction para obtener las posiciones posibles y comprueba si la posición de destino está en esa lista
+    #def valid_positions(self, from_row, from_col, to_row, to_col):
+     #   possible_positions = (
+      #      #movimientos horizontales y verticales
+       #     self.possible_positions_in_direction(from_row, from_col, 1, 0) +   # Vertical descendente
+        #    self.possible_positions_in_direction(from_row, from_col, -1, 0) +  # Vertical ascendente
+         #   self.possible_positions_in_direction(from_row, from_col, 0, 1) +   # Horizontal derecha
+          #  self.possible_positions_in_direction(from_row, from_col, 0, -1)    # Horizontal izquierda
+        #)
+        #return (to_row, to_col) in possible_positions
+
+    def get_possible_positions(self, from_row, from_col):
+        return self.possible_orthogonal_positions(from_row, from_col)
+    
     def valid_positions_in_rook(self, from_row, from_col, to_row, to_col):
-        possible_positions = (
-            #movimientos horizontales y verticales
-            self.possible_positions_in_direction(from_row, from_col, 1, 0) +   # Vertical descendente
-            self.possible_positions_in_direction(from_row, from_col, -1, 0) +  # Vertical ascendente
-            self.possible_positions_in_direction(from_row, from_col, 0, 1) +   # Horizontal derecha
-            self.possible_positions_in_direction(from_row, from_col, 0, -1)    # Horizontal izquierda
-        )
-        return (to_row, to_col) in possible_positions
+        possible_positions = self.get_possible_positions(from_row, from_col)
+        return self.is_valid_move(to_row, to_col, possible_positions)
 
 #Genera las posiciones posibles en una dirección específica (definida por `row_step` y `col_step`) 
 #Recorre esas posiciones hasta encontrar el borde del tablero o una pieza

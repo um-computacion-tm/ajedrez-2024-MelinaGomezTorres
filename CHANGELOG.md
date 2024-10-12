@@ -1,5 +1,13 @@
 # CHANGELOG
 
+# [0.50] - 11 / 10 / 2024 - Agregando más test para bishop
+
+### Added
+
+- Test para negar saltar sobre piezas aliadas
+- Test para capturar piezas enemigas
+- Test para detenerse al tener un obstáculo
+
 # [0.49] - 10 / 10 / 2024 - Cambios en test del bishop + nuevos test
 
 ### Changed
