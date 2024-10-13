@@ -1,6 +1,15 @@
 # CHANGELOG
 
-# [0.50] - 11 / 10 / 2024 - Agregando más test para bishop
+
+## [0.51] - 12 / 10 / 2024 - Cambios en piece y las piezas en general
+
+### Fixed
+
+- Arreglos en la lógica de movimiento para bishop y rook, intentando evitar duplicaciones
+- Arreglos en método init de la reina,rey,caballo y peón para evitar duplicaciones
+- Arreglos en piece para volver algunos métodos más genéricos
+
+## [0.50] - 11 / 10 / 2024 - Agregando más test para bishop
 
 ### Added
 
@@ -8,7 +17,7 @@
 - Test para capturar piezas enemigas
 - Test para detenerse al tener un obstáculo
 
-# [0.49] - 10 / 10 / 2024 - Cambios en test del bishop + nuevos test
+## [0.49] - 10 / 10 / 2024 - Cambios en test del bishop + nuevos test
 
 ### Changed
 
@@ -19,26 +28,26 @@
 - Configuración del tablero y el alfil blanca (método setUp)
 - Test de movimientos válidos del alfil
 
-# [0.48] - 09 / 10 / 2024 - Cambios en bishop
+## [0.48] - 09 / 10 / 2024 - Cambios en bishop
 
 ### Changed
 
 - Simplificación de la lógica del movimiento del alfil
 
-# [0.47] - 05 / 10 / 2024 - Últimos test para rook
+## [0.47] - 05 / 10 / 2024 - Últimos test para rook
 
 ### Added
 
 - Test de que la torre se detiene al encontrar un obstáculo
 - Test de movimientos fuera del tablero
 
-# [0.46] - 04 / 10 / 2024 - Más test para rook
+## [0.46] - 04 / 10 / 2024 - Más test para rook
 
 ### Added
 
 - Agregados más test para rook
 
-# [0.45] - 03 / 10 / 2024 - Cambios en rook y pruebas agregadas para test_rook
+## [0.45] - 03 / 10 / 2024 - Cambios en rook y pruebas agregadas para test_rook
 
 ### Changed
 
@@ -50,37 +59,37 @@
 - Test para limpiar las posiciones del tablero
 - Test de movimientos válidos de la torre
 
-# [0.44] - 02 / 10 / 2024 - Cambios en rook 
+## [0.44] - 02 / 10 / 2024 - Cambios en rook 
 
 ### Changed
 
 - Simplificación de la lógica del movimiento de la torre
 
-# [0.43] - 30 / 09 / 2024 - Movimientos en piece
+## [0.43] - 30 / 09 / 2024 - Movimientos en piece
 
 ### Added
 
 - Cálculo de movimientos en todas las direcciones 
 
-# [0.42] - 29 / 09 / 2024 - Cambios en el archivo piece
+## [0.42] - 29 / 09 / 2024 - Cambios en el archivo piece
 
 ### Changed
 
 - Cambios en el código de piece.py para una mejor identificación de las piezas
 
-# [0.41] - 28 / 09 / 2024 - Test para exceptions nuevo
+## [0.41] - 28 / 09 / 2024 - Test para exceptions nuevo
 
 ### Added
 
 - Subido test para las excepciones con sus mensajes respectivos
 
-# [0.40] - 27 / 09 / 2024 - Modificaciones en test_exceptions
+## [0.40] - 27 / 09 / 2024 - Modificaciones en test_exceptions
 
 ### Changed
 
 - Modificación para evitar repeticiones
 
-# [0.39] - 26 / 09 / 2024 - Test para exceptions
+## [0.39] - 26 / 09 / 2024 - Test para exceptions
 
 ### Added
 

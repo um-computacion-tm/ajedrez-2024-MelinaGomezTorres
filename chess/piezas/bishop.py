@@ -26,10 +26,8 @@ class Bishop(Piece):
         return self.possible_diagonal_positions(from_row, from_col)
 
     def valid_positions_in_bishop(self, from_row, from_col, to_row, to_col):
-        possible_positions = self.get_possible_positions(from_row, from_col)
-        return self.is_valid_move(to_row, to_col, possible_positions)
-
-
+        return self.valid_positions(from_row, from_col,to_row, to_col)
+    
     
     #def possible_positions_dtr(self, row, col):
         # diagonal top-right (movimiento hacia arriba a la derecha)
