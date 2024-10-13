@@ -8,7 +8,17 @@ class Queen(Piece):
         self.__white_symbol__ = "♛"
         self.__black_symbol__ = "♕"
 
-    
+    def get_possible_positions(self, from_row, from_col):
+        # La reina puede moverse en direcciones ortogonales y diagonales
+        return (
+            self.possible_orthogonal_positions(from_row, from_col) +
+            self.possible_diagonal_positions(from_row, from_col)
+        )
+
+    def valid_positions_in_queen(self, from_row, from_col, to_row, to_col):
+        # Validar movimientos usando el método genérico de validación
+        return self.valid_positions(from_row, from_col, to_row, to_col)
+
 
 
     #def __str__(self):

@@ -62,6 +62,11 @@ class Piece:
             next_row += row_delta
             next_col += col_delta
         return possibles
+    
+
+
+
+    
 
     # Método general que combina movimientos ortogonales y diagonales si es necesario
     #def get_possible_positions(self, from_row, from_col):
