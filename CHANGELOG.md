@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [0.54] - 15 / 10 / 2024 - Arreglando issues de duplicación y código para el rey
+
+### Changed
+
+- Eliminado parte de código en rook para evitar duplicación
+- Cambiando estructura del método init en king para eliminar issue
+
+### Added
+
+- Agregando lógica para el king
 
 ## [0.53] - 14 / 10 / 2024 - Agregando test para queen
 
