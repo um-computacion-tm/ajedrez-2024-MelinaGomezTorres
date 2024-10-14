@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## [0.52] - 13 / 10 / 2024 - Agregando estructura para queen
+
+### Added
+
+- Realizando el código para queen
+
 ## [0.51] - 12 / 10 / 2024 - Cambios en piece y las piezas en general
 
 ### Fixed
