@@ -25,8 +25,8 @@ class Rook(Piece):
     def get_possible_positions(self, from_row, from_col):
         return self.possible_orthogonal_positions(from_row, from_col)
     
-    def valid_positions_in_rook(self, from_row, from_col, to_row, to_col):
-        return self.valid_positions(from_row, from_col, to_row, to_col)
+    #def valid_positions_in_rook(self, from_row, from_col, to_row, to_col):
+     #   return self.valid_positions(from_row, from_col, to_row, to_col)
 
     
 
