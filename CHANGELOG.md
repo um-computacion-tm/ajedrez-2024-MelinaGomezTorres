@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## [0.53] - 14 / 10 / 2024 - Agregando test para queen
+
+### Added
+
+- Subidos test para queen
+
 ## [0.52] - 13 / 10 / 2024 - Agregando estructura para queen
 
 ### Added
