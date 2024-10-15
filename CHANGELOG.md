@@ -5,7 +5,8 @@
 ### Changed
 
 - Eliminado parte de código en rook para evitar duplicación
-- Cambiando estructura del método init en king para eliminar issue
+- Cambiando estructura del método init en king para eliminar issue de duplicación
+- Cambiando estructura del método init en knight para eliminar issue de duplicación
 
 ### Added
 
