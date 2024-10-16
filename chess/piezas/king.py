@@ -16,10 +16,10 @@ class King(Piece):
         return [
             (row + dr, col + dc)
             for dr, dc in directions
-            if self.__is_valid_move(row + dr, col + dc)
+            if self.__is__valid__move(row + dr, col + dc)
         ]
 
-    def __is_valid_move(self, row, col):
+    def __is__valid__move(self, row, col):
         if not (0 <= row < 8 and 0 <= col < 8):
             return False
         piece_at_position = self.__board__.get_piece(row, col)

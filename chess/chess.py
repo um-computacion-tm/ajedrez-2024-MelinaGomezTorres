@@ -1,4 +1,5 @@
 from chess.board import Board
+from chess.exceptions import InvalidMove, InvalidTurn, EmptyPosition, OutOfBoard
 
 
 class Chess:
@@ -31,3 +32,5 @@ class Chess:
             self.__turn__ = "BLACK"
         else:
             self.__turn__ = "WHITE"
+
+

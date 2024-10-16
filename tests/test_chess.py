@@ -2,8 +2,8 @@
 #Importo más clases (Board y Piece)
 import unittest
 from chess.chess import Chess
-#from chess.board import Board
-# from chess.piece import Piece
+from chess.board import Board
+from chess.piece import Piece
 #Creo la clase correspondiente para este test 
 # Entro de setUp (se ejecuta automáticamente antes de cada prueba para asegurar que estas no se repitan)
 # Creo una nueva instancia del juego de ajedrez (self.game = Chess())
@@ -53,3 +53,7 @@ class TestChess(unittest.TestCase):
                          
 if __name__ == '__main__':
     unittest.main()
+
+
+
+

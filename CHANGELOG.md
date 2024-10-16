@@ -1,6 +1,12 @@
 # CHANGELOG
 
-## [0.54] - 15 / 10 / 2024 - Arreglando issues de duplicación y código para el rey
+## [0.54] - 15 / 10 / 2024 - Agregando test para el rey
+
+### Added
+
+- Subidos test para queen
+
+## [0.53] - 14 / 10 / 2024 - Agregando test para queen y arreglando issues de duplicación y código para el rey
 
 ### Changed
 
@@ -10,13 +16,8 @@
 
 ### Added
 
-- Agregando lógica para el king
-
-## [0.53] - 14 / 10 / 2024 - Agregando test para queen
-
-### Added
-
 - Subidos test para queen
+- Agregando lógica para el king
 
 ## [0.52] - 13 / 10 / 2024 - Agregando estructura para queen
 

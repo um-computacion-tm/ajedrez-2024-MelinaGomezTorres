@@ -10,6 +10,7 @@ class Rook(Piece):
     def __init__(self, color,board=None):
         super().__init__(color, board)
 
+
 #Verifica si un movimiento de la torre es válido
 #Llama al método possible_positions_direction para obtener las posiciones posibles y comprueba si la posición de destino está en esa lista
     #def valid_positions(self, from_row, from_col, to_row, to_col):
