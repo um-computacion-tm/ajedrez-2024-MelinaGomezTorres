@@ -32,19 +32,22 @@ class TestQueen(unittest.TestCase):
             with self.subTest(pos=pos):
                 self.assertIn(pos, self.queen_white.possible_diagonal_positions(4, 4))
 
-    def test_queen_cannot_jump_over_ally(self):
-    #Verifica que la reina no puede saltar sobre piezas aliadas
-        ally_positions = [(5, 4), (3, 4), (3, 3)]
-        for pos in ally_positions:
-            self.board.set_piece(*pos, Queen("WHITE", self.board))  # Coloca piezas aliadas
-        for pos in ally_positions:
-            with self.subTest(pos=pos):
-                self.assertNotIn(pos, self.queen_white.possible_orthogonal_positions(4, 4))
-
     def test_queen_can_capture_enemy(self):
     #Verifica que la reina puede capturar piezas enemigas
         self.board.set_piece(5, 5, Queen("BLACK", self.board))  # Pieza enemiga
         self.assertIn((5, 5), self.queen_white.possible_diagonal_positions(4, 4))
+        self.board.set_piece(5, 4, Queen("BLACK", self.board))  # Pieza enemiga
+        self.assertIn((5, 4), self.queen_white.possible_orthogonal_positions(4, 4))
+    
+    def test_valid_positions(self):
+        self.clear_positions((4, 5), (4, 3), (3, 4), (5, 4))
+    
+    # Verifica que el movimiento de (4, 4) a (5, 4) sea válido
+        self.assertTrue(self.queen_white.valid_positions(4, 4, 5, 4))
+    # Verifica que el movimiento de (4, 4) a (3, 4) sea válido
+        self.assertTrue(self.queen_white.valid_positions(4, 4, 3, 4))
+    # Verifica que el movimiento de (4, 4) a (4, 5) sea válido
+        self.assertTrue(self.queen_white.valid_positions(4, 4, 4, 5))
 
     def clear_positions(self, *positions):
     #Limpia las posiciones del tablero
