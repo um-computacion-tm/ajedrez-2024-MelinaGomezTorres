@@ -74,6 +74,7 @@ class Board:
         if row < 0 or row >= len(self.__positions__) or col < 0 or col >= len(self.__positions__[0]):
             raise OutOfBoard("La posición indicada se encuentra fuera del tablero")
         return self.__positions__[row][col]
+        
     
     def set_piece(self, row, col, piece):
         self.__positions__[row][col] = piece
@@ -82,5 +83,7 @@ class Board:
         origin = self.get_piece(from_row, from_col)
         self.set_piece(to_row, to_col, origin)
         self.set_piece(from_row, from_col, None)
+
+    
 
     

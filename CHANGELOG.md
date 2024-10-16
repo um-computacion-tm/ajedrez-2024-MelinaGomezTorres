@@ -4,7 +4,8 @@
 
 ### Added
 
-- Subidos test para queen
+- Subidos test para king
+- Subidos test para knight
 
 ## [0.53] - 14 / 10 / 2024 - Agregando test para queen y arreglando issues de duplicación y código para el rey
 
