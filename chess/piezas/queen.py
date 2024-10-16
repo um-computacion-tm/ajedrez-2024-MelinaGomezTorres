@@ -8,6 +8,14 @@ class Queen(Piece):
         self.__white_symbol__ = "♛"
         self.__black_symbol__ = "♕"
 
+    #def __init__(self, color, board):
+     #   super().__init__(color, board)
+      #  self.__white_symbol__ = "♛" if color == "white" else None
+       # self.__black_symbol__ = "♕" if color == "black" else None
+
+    #def __str__(self):
+     #   return self.__white_symbol__ if self.__color__ == "white" else self.__black_symbol__        
+
     def get_possible_positions(self, from_row, from_col):
         # La reina puede moverse en direcciones ortogonales y diagonales
         return (
