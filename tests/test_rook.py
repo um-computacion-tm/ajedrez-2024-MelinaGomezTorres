@@ -25,39 +25,39 @@ class TestRook(unittest.TestCase):
 
     def test_rook_valid_moves(self):
 #Verifica los movimientos válidos de la torre
-        self.assertTrue(self.rook_white.valid_positions(7, 0, 5, 0))
+        self.assertTrue(self.rook_white.__valid_positions__(7, 0, 5, 0))
         self.board.set_piece(5, 0, Rook("WHITE", self.board))  
-        self.assertFalse(self.rook_white.valid_positions(7, 0, 5, 0))  
+        self.assertFalse(self.rook_white.__valid_positions__(7, 0, 5, 0))  
         self.board.set_piece(6, 0, Rook("BLACK", self.board))  
-        self.assertTrue(self.rook_white.valid_positions(7, 0, 6, 0))  
-        self.assertFalse(self.rook_white.valid_positions(7, 0, 8, 0))  
+        self.assertTrue(self.rook_white.__valid_positions__(7, 0, 6, 0))  
+        self.assertFalse(self.rook_white.__valid_positions__(7, 0, 8, 0))  
 
     def test_rook_cannot_jump_over_ally(self):
 #Verifica que la torre no puede saltar sobre piezas aliadas
         self.board.set_piece(6, 0, Rook("WHITE", self.board))  
-        self.assertFalse(self.rook_white.valid_positions(7, 0, 5, 0))  
+        self.assertFalse(self.rook_white.__valid_positions__(7, 0, 5, 0))  
 
     def test_rook_can_capture_enemy(self):
 #Verifica que la torre puede capturar piezas enemigas
         self.board.set_piece(5, 0, Rook("BLACK", self.board))  
-        self.assertTrue(self.rook_white.valid_positions(7, 0, 5, 0))  
+        self.assertTrue(self.rook_white.__valid_positions__(7, 0, 5, 0))  
 
     def test_rook_cannot_move_diagonally(self):
 #Verifica que la torre no puede moverse en diagonal
-        self.assertFalse(self.rook_white.valid_positions(7, 0, 6, 1))  
+        self.assertFalse(self.rook_white.__valid_positions__(7, 0, 6, 1))  
 
     def test_rook_moves_until_obstacle(self):
 #Verifica que la torre se detiene al encontrar un obstáculo
         for i in range(6, 0, -1):
             self.board.set_piece(i, 0, None)
-        self.assertTrue(self.rook_white.valid_positions(7, 0, 0, 0))  
+        self.assertTrue(self.rook_white.__valid_positions__(7, 0, 0, 0))  
         self.board.set_piece(3, 0, Rook("WHITE", self.board))  
-        self.assertFalse(self.rook_white.valid_positions(7, 0, 0, 0))  
+        self.assertFalse(self.rook_white.__valid_positions__(7, 0, 0, 0))  
 
     def test_rook_move_out_of_bounds(self):
 #Verifica movimientos fuera del tablero (fila y columna)
-        self.assertFalse(self.rook_white.valid_positions(7, 0, 9, 0))  
-        self.assertFalse(self.rook_white.valid_positions(7, 0, 7, -1))  
+        self.assertFalse(self.rook_white.__valid_positions__(7, 0, 9, 0))  
+        self.assertFalse(self.rook_white.__valid_positions__(7, 0, 7, -1))  
 
 
 

@@ -31,8 +31,8 @@ class TestPiece(unittest.TestCase):
         self.white_piece.get_possible_positions = lambda r, c: possible_positions
 
         # Verificamos si un movimiento propuesto es válido
-        self.assertTrue(self.white_piece.valid_positions(3, 3, 2, 2))
-        self.assertFalse(self.white_piece.valid_positions(3, 3, 5, 5))
+        self.assertTrue(self.white_piece.__valid_positions__(3, 3, 2, 2))
+        self.assertFalse(self.white_piece.__valid_positions__(3, 3, 5, 5))
 
     def test_possible_positions_in_direction(self):
     # Verificamos que las posiciones posibles en una dirección se calculen correctamente

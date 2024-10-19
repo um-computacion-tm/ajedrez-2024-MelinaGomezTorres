@@ -43,11 +43,11 @@ class TestQueen(unittest.TestCase):
         self.clear_positions((4, 5), (4, 3), (3, 4), (5, 4))
     
     # Verifica que el movimiento de (4, 4) a (5, 4) sea válido
-        self.assertTrue(self.queen_white.valid_positions(4, 4, 5, 4))
+        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 5, 4))
     # Verifica que el movimiento de (4, 4) a (3, 4) sea válido
-        self.assertTrue(self.queen_white.valid_positions(4, 4, 3, 4))
+        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 3, 4))
     # Verifica que el movimiento de (4, 4) a (4, 5) sea válido
-        self.assertTrue(self.queen_white.valid_positions(4, 4, 4, 5))
+        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 4, 5))
 
     def clear_positions(self, *positions):
     #Limpia las posiciones del tablero

@@ -11,3 +11,6 @@ class EmptyPosition(InvalidMove):
 
 class OutOfBoard(InvalidMove):
     message = "La posicion indicada se encuentra fuera del tablero"
+
+
+    

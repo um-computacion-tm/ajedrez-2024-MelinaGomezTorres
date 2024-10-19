@@ -7,16 +7,12 @@ class Piece:
     def __str__(self):
         #Obtiene el símbolo de la pieza según su color
         return getattr(self, f"__{self.__color__.lower()}_symbol__", "")
-    
-    #Anterior
-    #def __str__(self):
-     #   return f"{self.__class__.__name__} ({self.__color__})"
         
     def get_color(self):
         return self.__color__
     
     #Determina si un movimiento propuesto para una pieza es permitido o no según las reglas de la pieza específica y el tablero
-    def valid_positions(self, from_row, from_col, to_row, to_col):
+    def __valid_positions__(self, from_row, from_col, to_row, to_col):
     #Método genérico para validar posiciones
         possible_positions = self.get_possible_positions(from_row, from_col)
         return self.is_valid_move(to_row, to_col, possible_positions)
@@ -62,19 +58,3 @@ class Piece:
             next_row += row_delta
             next_col += col_delta
         return possibles
-    
-
-
-
-    
-
-    # Método general que combina movimientos ortogonales y diagonales si es necesario
-    #def get_possible_positions(self, from_row, from_col):
-     #   return (
-      #      self.possible_orthogonal_positions(from_row, from_col) +
-       #     self.possible_diagonal_positions(from_row, from_col)
-        #)
-
-
-    
-    

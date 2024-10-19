@@ -39,18 +39,7 @@ class Pawn(Piece):
         return captures
 
     def valid_positions(self, from_row, from_col, to_row, to_col):
-        valid = super().valid_positions(from_row, from_col, to_row, to_col)
+        valid = super().__valid_positions__(from_row, from_col, to_row, to_col)
         if valid:
             self.__has_moved__ = True  # Marca que el peón ya ha hecho su primer movimiento
         return valid
-
-
-
-
-
-
-
-
-
-    #def __str__(self):
-     #   return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
