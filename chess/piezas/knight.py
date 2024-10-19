@@ -28,11 +28,3 @@ class Knight(Piece):
                     valid_moves.append((row, col))  # Puede moverse o capturar
 
         return valid_moves
-
-
-
-
-
-
-    #def __str__(self):
-     #   return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__

@@ -6,15 +6,7 @@ class Queen(Piece):
     def __init__(self, color, board):
         super().__init__(color, board)
         self.__white_symbol__ = "♛"
-        self.__black_symbol__ = "♕"
-
-    #def __init__(self, color, board):
-     #   super().__init__(color, board)
-      #  self.__white_symbol__ = "♛" if color == "white" else None
-       # self.__black_symbol__ = "♕" if color == "black" else None
-
-    #def __str__(self):
-     #   return self.__white_symbol__ if self.__color__ == "white" else self.__black_symbol__        
+        self.__black_symbol__ = "♕"      
 
     def get_possible_positions(self, from_row, from_col):
         # La reina puede moverse en direcciones ortogonales y diagonales
@@ -23,11 +15,6 @@ class Queen(Piece):
             self.possible_diagonal_positions(from_row, from_col)
         )
 
-    def valid_positions_in_queen(self, from_row, from_col, to_row, to_col):
+    def __valid_positions_in_queen__(self, from_row, from_col, to_row, to_col):
         # Validar movimientos usando el método genérico de validación
-        return self.valid_positions(from_row, from_col, to_row, to_col)
-
-
-
-    #def __str__(self):
-      #  return self.__white_symbol__ if self.__color__ == "WHITE" else self.__black_symbol__
+        return self.__valid_positions__(from_row, from_col, to_row, to_col)

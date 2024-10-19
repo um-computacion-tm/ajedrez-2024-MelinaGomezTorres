@@ -69,6 +69,8 @@ class Board:
             board_str += "\n"
         return board_str
     
+    # Cambiar cuando ponga un tablero más bonito
+    
     def get_piece(self, row, col):
         # Verifica que las coordenadas estén dentro de los límites del tablero
         if row < 0 or row >= len(self.__positions__) or col < 0 or col >= len(self.__positions__[0]):

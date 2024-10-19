@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [0.55] - 16 / 10 / 2024 - Agregando pawn + test para queen
+
+### Added
+
+- Agregando lógica de movimiento para pawn
+- Agregando tests para pawn
+- Subido test de posiciones validas para queen 
+
 ## [0.54] - 15 / 10 / 2024 - Agregando test para el rey
 
 ### Added

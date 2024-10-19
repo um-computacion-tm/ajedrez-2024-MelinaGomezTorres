@@ -7,7 +7,7 @@ WORKDIR /ajedrez-2024-MelinaGomezTorres
 
 RUN pip install -r requirements.txt
 
-CMD ["sh", "-c", "coverage run -m unittest && coverage report -m && python main.py"]
+CMD ["sh", "-c", "coverage run -m unittest && coverage report -m && python -m chess.cli"]
 
 # docker buildx build -t ajedrez-2024-melinagomeztorres .
 # docker run -i ajedrez-2024-melinagomeztorres
