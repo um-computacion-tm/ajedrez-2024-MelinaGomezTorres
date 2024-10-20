@@ -7,7 +7,7 @@ class TestQueen(unittest.TestCase):
     def test_str(self):
     #Verifica que el símbolo de la reina sea el correcto
         self.assertEqual(str(self.queen_white), "♛")  # Símbolo para la reina blanca
-        queen_black = Queen("BLACK", self.board)
+        queen_black = Queen("BLACK", self.board) # Crea una reina negra.
         self.assertEqual(str(queen_black), "♕")  # Símbolo para la reina negra
 
     def setUp(self):
@@ -19,7 +19,6 @@ class TestQueen(unittest.TestCase):
     def test_possible_orthogonal_positions(self):
     #Verifica los movimientos ortogonales válidos
         self.clear_positions((4, 5), (4, 3), (3, 4), (5, 4))
-        # Verifica todos los movimientos ortogonales
         for pos in [(5, 4), (3, 4), (4, 5), (4, 3)]:
             with self.subTest(pos=pos):
                 self.assertIn(pos, self.queen_white.possible_orthogonal_positions(4, 4))
@@ -27,7 +26,6 @@ class TestQueen(unittest.TestCase):
     def test_possible_diagonal_positions(self):
     #Verifica los movimientos diagonales válidos
         self.clear_positions((3, 3), (3, 5), (5, 3), (5, 5))
-        # Verifica todos los movimientos diagonales
         for pos in [(3, 3), (3, 5), (5, 3), (5, 5)]:
             with self.subTest(pos=pos):
                 self.assertIn(pos, self.queen_white.possible_diagonal_positions(4, 4))
@@ -40,14 +38,15 @@ class TestQueen(unittest.TestCase):
         self.assertIn((5, 4), self.queen_white.possible_orthogonal_positions(4, 4))
     
     def test_valid_positions(self):
+        # Limpia las posiciones antes de las pruebas
         self.clear_positions((4, 5), (4, 3), (3, 4), (5, 4))
     
     # Verifica que el movimiento de (4, 4) a (5, 4) sea válido
-        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 5, 4))
+        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 5, 4))  # Abajo
     # Verifica que el movimiento de (4, 4) a (3, 4) sea válido
-        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 3, 4))
+        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 3, 4)) # Arriba
     # Verifica que el movimiento de (4, 4) a (4, 5) sea válido
-        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 4, 5))
+        self.assertTrue(self.queen_white.__valid_positions__(4, 4, 4, 5)) # Derecha
 
     def clear_positions(self, *positions):
     #Limpia las posiciones del tablero

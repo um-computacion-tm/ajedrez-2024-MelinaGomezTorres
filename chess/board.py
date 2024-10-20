@@ -17,6 +17,7 @@ class Board:
         self.__positions__ = [[None for _ in range(8)] for _ in range(8)]
         self.__initialize_pieces()
 
+    # Inicializa las piezas en el tablero.
     def __initialize_pieces(self, for_test=False):
     #Si for_test es True, no se inician las piezas
         if for_test:
@@ -57,7 +58,7 @@ class Board:
     #Se usa globals() para crear la instancia de la pieza
                 self.__positions__[x][y] = globals()[piece](color, self)
        
-    def __str__(self):
+    '''def __str__(self):
         
         board_str = ""
         for row in self.__positions__:
@@ -67,20 +68,55 @@ class Board:
                 else:
                     board_str += " "
             board_str += "\n"
+        return board_str'''
+   
+    # Representa el tablero como una cadena para su visualización.
+    # Retorna:
+    # str: Representación en forma de cadena del tablero.
+    def __str__(self):
+        board_str = "  0 1 2 3 4 5 6 7\n"  # Encabezado de columnas
+        board_str += "  ----------------\n"
+        
+        for row_idx, row in enumerate(self.__positions__):
+            board_str += str(8 - row_idx) + "|"  # Encabezado de filas
+            for cell in row:
+                if cell is not None:
+                    board_str += str(cell) + " "
+                else:
+                    board_str += ". "  # Punto para espacios vacíos
+            board_str += "|" + str(8 - row_idx) + "\n"  # Cierra la fila con el número de fila
+        board_str += "  ----------------\n"
+        board_str += "  0 1 2 3 4 5 6 7\n"  # Pie de columnas
         return board_str
     
-    # Cambiar cuando ponga un tablero más bonito
-    
+    # Obtiene la pieza en una posición específica del tablero.
+    # Parámetros:
+    # row (int): Fila de la posición.
+    # col (int): Columna de la posición.
+    # Retorna:
+    # Piece: La pieza en la posición especificada.
+    # Lanza:
+    # OutOfBoard: Si las coordenadas están fuera de los límites del tablero.
     def get_piece(self, row, col):
-        # Verifica que las coordenadas estén dentro de los límites del tablero
         if row < 0 or row >= len(self.__positions__) or col < 0 or col >= len(self.__positions__[0]):
             raise OutOfBoard("La posición indicada se encuentra fuera del tablero")
         return self.__positions__[row][col]
-        
     
+    # Establece una pieza en una posición específica del tablero.
+    # Parámetros:
+    # row (int): Fila de la posición.
+    # col (int): Columna de la posición.
+    # piece (Piece): La pieza a colocar en la posición.
     def set_piece(self, row, col, piece):
         self.__positions__[row][col] = piece
 
+    
+    # Mueve una pieza de una posición a otra.
+    # Parámetros:
+    # from_row (int): Fila de origen.
+    # from_col (int): Columna de origen.
+    # to_row (int): Fila de destino.
+    # to_col (int): Columna de destino.
     def move(self, from_row, from_col, to_row, to_col):
         origin = self.get_piece(from_row, from_col)
         self.set_piece(to_row, to_col, origin)

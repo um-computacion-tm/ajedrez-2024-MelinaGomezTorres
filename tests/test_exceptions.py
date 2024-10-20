@@ -6,7 +6,8 @@ class TestChessExceptions(unittest.TestCase):
 #Captura la excepción lanzada y verifica que el mensaje asociado a la excepción coincide con el mensaje esperado
     def check_exception(self, exception_class, expected_message):
         with self.assertRaises(exception_class) as context:
-            raise exception_class()
+            raise exception_class() # Lanza la excepción para verificarla
+        # Verifica que el mensaje de la excepción coincida con el mensaje esperado
         self.assertEqual(str(context.exception), expected_message)
 
 #Verifica que cuando se lanza la excepción InvalidMove, el mensaje sea el esperado
