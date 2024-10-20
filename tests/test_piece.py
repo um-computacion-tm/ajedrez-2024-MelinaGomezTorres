@@ -15,6 +15,7 @@ class TestPiece(unittest.TestCase):
 
     def test_str_representation(self):
         # Verificamos la representación visual de las piezas
+        # Retorne el símbolo adecuado, que debería ser una cadena no vacía.
         self.assertEqual(str(self.white_piece), "", "La representación de la pieza blanca debería ser un símbolo")
         self.assertEqual(str(self.black_piece), "", "La representación de la pieza negra debería ser un símbolo")
 
@@ -57,9 +58,11 @@ class MockBoard:
         self.board = [[None for _ in range(8)] for _ in range(8)]
 
     def set_piece_at(self, row, col, piece):
+        # Coloca una pieza en la posición especificada del tablero
         self.board[row][col] = piece
 
     def get_piece(self, row, col):
+        # Retorna la pieza en la posición especificada del tablero
         return self.board[row][col]
 
 

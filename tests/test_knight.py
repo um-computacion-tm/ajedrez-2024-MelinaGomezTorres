@@ -6,8 +6,8 @@ class TestKnight(unittest.TestCase):
 
     def setUp(self):
         self.board = Board(for_test=True)  # Crea un tablero sin piezas iniciales
-        self.knight_white = Knight("white", self.board)
-        self.knight_black = Knight("black", self.board)
+        self.knight_white = Knight("white", self.board) # Caballo blanco
+        self.knight_black = Knight("black", self.board) # Caballo negro
 
     def test_knight_symbol(self):
         # Verifica que el símbolo sea correcto según el color
@@ -17,8 +17,8 @@ class TestKnight(unittest.TestCase):
     def test_knight_possible_positions(self):
         # Coloca el caballo en una posición inicial
         self.board.set_piece(4, 4, self.knight_white)
-
-        # Verifica las posiciones posibles del caballo
+        # Obtiene las posiciones posibles que puede alcanzar el caballo
+        # Verifica esas posiciones
         positions = self.knight_white.get_possible_positions(4, 4)
         expected_positions = [
             (6, 5), (6, 3), (2, 5), (2, 3), 

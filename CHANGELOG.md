@@ -1,19 +1,47 @@
 # CHANGELOG
 
+## [0.57] - 20 / 10 / 2024 - Subiendo todo a la rama main y cambiando la representación visual del tablero
+
+### Added
+
+- Subidos todo los archivos a la rama main, agregando respectiva documentación
+- Subidos CHANGELOG y README
+
+### Changed
+
+- Cambios realizados en la representación visual del tablero para una mejora estética en board y test_board
+- Eliminando un test en board y agregando otro sobre un movimiento en el tablero
+
+## [0.56] - 19 / 10 / 2024 - Cambiando chess y cli, junto a sus test
+
+### Changed
+
+- Cambiando la lógica del chess 
+- Cambiando la lógica del cli 
+- Cambiando tests para chess para adaptarse al nuevo código
+- Cambiando tests para cli para adaptarse al nuevo código
+
+### Added
+
+- Agregando nuevos tests para el nuevo chess
+- Agregando nuevos tests para el nuevo cli
+- Agregando CHANGELOG
+
+
 ## [0.55] - 16 / 10 / 2024 - Agregando pawn + test para queen
 
 ### Added
 
 - Agregando lógica de movimiento para pawn
 - Agregando tests para pawn
-- Subido test de posiciones validas para queen 
+- Subido tests de posiciones validas para queen 
 
-## [0.54] - 15 / 10 / 2024 - Agregando test para el rey
+## [0.54] - 15 / 10 / 2024 - Agregando test para el rey y el caballo
 
 ### Added
 
-- Subidos test para king
-- Subidos test para knight
+- Subidos tests para king
+- Subidos tests para knight
 
 ## [0.53] - 14 / 10 / 2024 - Agregando test para queen y arreglando issues de duplicación y código para el rey
 
@@ -25,7 +53,7 @@
 
 ### Added
 
-- Subidos test para queen
+- Subidos tests para queen
 - Agregando lógica para el king
 
 ## [0.52] - 13 / 10 / 2024 - Agregando estructura para queen

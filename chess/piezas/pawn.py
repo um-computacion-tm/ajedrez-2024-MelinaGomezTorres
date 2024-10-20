@@ -5,10 +5,16 @@ from chess.piece import Piece
 class Pawn(Piece):
     def __init__(self, color, board):
         super().__init__(color, board)
-        self.__white_symbol__ = "♟"
-        self.__black_symbol__ = "♙"
+        self.__white_symbol__ = "♟"   # Símbolo del peón blanco.
+        self.__black_symbol__ = "♙"   # Símbolo del peón negro.
         self.__has_moved__ = False  # Indica si el peón ya se ha movido
 
+    # Devuelve las posiciones posibles del peón desde su posición actual.
+    # Parámetros:
+    # from_row (int): La fila actual del peón.
+    # from_col (int): La columna actual del peón.
+    # Retorna:
+    # list: Una lista de posiciones válidas en forma de coordenadas (fila, columna).
     def get_possible_positions(self, from_row, from_col):
         possibles = []
         direction = -1 if self.get_color() == "WHITE" else 1  # Los peones blancos se mueven hacia arriba (-1), los negros hacia abajo (+1)
@@ -27,6 +33,13 @@ class Pawn(Piece):
 
         return possibles
 
+    # Devuelve las posiciones válidas para capturas diagonales del peón.
+    # Parámetros:
+    # from_row (int): La fila actual del peón.
+    # from_col (int): La columna actual del peón.
+    # direction (int): La dirección del movimiento (1 o -1).
+    # Retorna:
+    # list: Una lista de posiciones válidas para capturas diagonales.
     def possible_diagonal_capture(self, from_row, from_col, direction):
         captures = []
         for col_delta in [-1, 1]:  # Diagonales izquierda y derecha
@@ -38,6 +51,14 @@ class Pawn(Piece):
                     captures.append((to_row, to_col))
         return captures
 
+    # Verifica si un movimiento de peón a una posición de destino es válido.
+    # Parámetros:
+    # from_row (int): La fila actual del peón.
+    # from_col (int): La columna actual del peón.
+    # to_row (int): La fila de destino.
+    # to_col (int): La columna de destino.
+    # Retorna:
+    # bool: True si el movimiento es válido; False en caso contrario.
     def valid_positions(self, from_row, from_col, to_row, to_col):
         valid = super().__valid_positions__(from_row, from_col, to_row, to_col)
         if valid:

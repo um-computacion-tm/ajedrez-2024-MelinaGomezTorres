@@ -6,8 +6,10 @@ from chess.exceptions import OutOfBoard
 class TestPawn(unittest.TestCase):
 
     def setUp(self):
+        # Configura el entorno de pruebas antes de cada método de prueba.
         # Crea un tablero para pruebas sin configurar las piezas automáticamente
         self.board = Board(for_test=True)
+        # Inicializa los peones blanco y negro
         self.pawn_white = Pawn("WHITE", self.board)
         self.pawn_black = Pawn("BLACK", self.board)
         # Coloca el peón blanco en la posición inicial

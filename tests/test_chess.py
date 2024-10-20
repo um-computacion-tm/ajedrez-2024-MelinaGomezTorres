@@ -5,12 +5,11 @@ from chess.chess import Chess
 from chess.exceptions import InvalidMove, EmptyPosition
 #Creo la clase correspondiente para este test 
 # Entro de setUp (se ejecuta automáticamente antes de cada prueba para asegurar que estas no se repitan)
-# Creo una nueva instancia del juego de ajedrez (self.game = Chess())
 
 class TestChess(unittest.TestCase):
     
     def setUp(self):
-        self.__game__ = Chess()
+        self.__game__ = Chess() # Creo una nueva instancia del juego de ajedrez (self.game = Chess())
 
 # Asegura que el juego esté en marcha cuando se llama al método is_playing
     def test_is_playing(self):
@@ -29,7 +28,6 @@ class TestChess(unittest.TestCase):
 
     def test_move_piece(self):
     # Mover una pieza válida (Peón)
-
         self.__game__.move(6, 0, 5, 0)  # Mover el peón blanco de (6,0) a (5,0)
         piece = self.__game__.get_board().get_piece(5, 0)  
         self.assertIsNotNone(piece, "El peón debe estar en la nueva posición.")
@@ -60,7 +58,6 @@ class TestChess(unittest.TestCase):
         self.__game__.get_board().__positions__ = [[None for _ in range(8)] for _ in range(8)]
         self.assertFalse(self.__game__.is_playing(), "El juego debe estar terminado.")
 
-
     def test_move_game_over(self):
         # Simular fin del juego
         self.__game__.end_game()  # Método que se llama cuando el juego termina
@@ -78,6 +75,7 @@ class TestChess(unittest.TestCase):
             self.__game__.move(0, 0, 2, 2)  # Movimiento inválido para una torre
 
 #Se compara el turno actual con el turno guardado antes de la acción. Si son iguales, el test pasa, sino, el test falla con el mensaje especificado
+#Se asegura que el turno no cambie al llamar a is_playing
     def test_turn_unchanged(self):
         initial_turn = self.__game__.turn
         self.__game__.is_playing()  # Acción que no debería cambiar el turno
