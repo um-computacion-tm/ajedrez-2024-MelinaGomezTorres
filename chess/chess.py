@@ -56,7 +56,9 @@ class Chess:
     # Retorna:
     # bool: Verdadero si el movimiento es válido.
     def __validate_move(self, piece, from_row, from_col, to_row, to_col):
-        return piece.valid_positions(from_row, from_col, to_row, to_col)
+        #return piece.valid_positions(from_row, from_col, to_row, to_col)
+        return piece.__valid_positions__(from_row, from_col, to_row, to_col)
+
 
     # Verifica si hay piezas de ambos colores en el tablero.
     # Retorna:

@@ -78,13 +78,13 @@ class Board:
         board_str += "  ----------------\n"
         
         for row_idx, row in enumerate(self.__positions__):
-            board_str += str(8 - row_idx) + "|"  # Encabezado de filas
+            board_str += str(row_idx) + "|"  # Encabezado de filas
             for cell in row:
                 if cell is not None:
                     board_str += str(cell) + " "
                 else:
                     board_str += ". "  # Punto para espacios vacíos
-            board_str += "|" + str(8 - row_idx) + "\n"  # Cierra la fila con el número de fila
+            board_str += "|" + str(row_idx) + "\n"  # Cierra la fila con el número de fila
         board_str += "  ----------------\n"
         board_str += "  0 1 2 3 4 5 6 7\n"  # Pie de columnas
         return board_str
