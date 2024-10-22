@@ -7,19 +7,31 @@ from chess.piezas.pawn import Pawn
 
 from chess.exceptions import OutOfBoard
 
-#Creo un tablero vacío de 8x8 
-#Utilizo un método para configurar la torre, caballo, alfíl, reina, rey y peón colocandolos en el tablero
-#(Defino las posiciones en el tablero de las piezas blancas y negras)
-
-#Modifico el código anterior para iniciar todas las piezas en una sola función usando un diccionario y bucles para evitar repeticiones
 class Board:
+    """
+    Clase que representa un tablero de ajedrez de 8x8.
+    """
     def __init__(self, for_test=False ):
+        """
+        Inicializa un tablero vacío de 8x8 y coloca las piezas en sus posiciones iniciales.
+
+        Parámetros:
+            for_test (bool): Si es True, no se inician las piezas.
+        """
         self.__positions__ = [[None for _ in range(8)] for _ in range(8)]
         self.__initialize_pieces()
 
     # Inicializa las piezas en el tablero.
     def __initialize_pieces(self, for_test=False):
-    #Si for_test es True, no se inician las piezas
+        """
+        Inicializa las piezas en el tablero.
+
+        Parámetros:
+            for_test (bool): Si es True, no se inician las piezas.
+
+        Realiza:
+            - Configura las posiciones iniciales de las piezas en el tablero utilizando un diccionario.
+        """
         if for_test:
             return
     #Diccionario que define las posiciones iniciales de cada tipo de pieza en el tablero
@@ -58,10 +70,16 @@ class Board:
     #Se usa globals() para crear la instancia de la pieza
                 self.__positions__[x][y] = globals()[piece](color, self)
    
-    # Representa el tablero como una cadena para su visualización.
-    # Retorna:
-    # str: Representación en forma de cadena del tablero.
     def __str__(self):
+        """
+        Representa el tablero como una cadena para su visualización.
+
+        Retorna:
+            str: Representación en forma de cadena del tablero.
+
+        Realiza:
+            - Genera una representación visual del tablero con filas y columnas, mostrando las piezas y espacios vacíos.
+        """
         board_str = "  0 1 2 3 4 5 6 7\n"  # Encabezado de columnas
         board_str += "  ----------------\n"
         
@@ -77,35 +95,55 @@ class Board:
         board_str += "  0 1 2 3 4 5 6 7\n"  # Pie de columnas
         return board_str
     
-    # Obtiene la pieza en una posición específica del tablero.
-    # Parámetros:
-    # row (int): Fila de la posición.
-    # col (int): Columna de la posición.
-    # Retorna:
-    # Piece: La pieza en la posición especificada.
-    # Lanza:
-    # OutOfBoard: Si las coordenadas están fuera de los límites del tablero.
     def get_piece(self, row, col):
+        """
+        Obtiene la pieza en una posición específica del tablero.
+
+        Parámetros:
+            row (int): Fila de la posición.
+            col (int): Columna de la posición.
+
+        Retorna:
+            Piece: La pieza en la posición especificada.
+
+        Lanza:
+            OutOfBoard: Si las coordenadas están fuera de los límites del tablero.
+
+        Realiza:
+            - Verifica si la posición está dentro de los límites del tablero y retorna la pieza correspondiente.
+        """
         if row < 0 or row >= len(self.__positions__) or col < 0 or col >= len(self.__positions__[0]):
             raise OutOfBoard("La posición indicada se encuentra fuera del tablero")
         return self.__positions__[row][col]
     
-    # Establece una pieza en una posición específica del tablero.
-    # Parámetros:
-    # row (int): Fila de la posición.
-    # col (int): Columna de la posición.
-    # piece (Piece): La pieza a colocar en la posición.
     def set_piece(self, row, col, piece):
+        """
+        Establece una pieza en una posición específica del tablero.
+
+        Parámetros:
+            row (int): Fila de la posición.
+            col (int): Columna de la posición.
+            piece (Piece): La pieza a colocar en la posición.
+
+        Realiza:
+            - Coloca la pieza en la posición especificada del tablero.
+        """
         self.__positions__[row][col] = piece
 
-    
-    # Mueve una pieza de una posición a otra.
-    # Parámetros:
-    # from_row (int): Fila de origen.
-    # from_col (int): Columna de origen.
-    # to_row (int): Fila de destino.
-    # to_col (int): Columna de destino.
     def move(self, from_row, from_col, to_row, to_col):
+        """
+        Mueve una pieza de una posición a otra.
+
+        Parámetros:
+            from_row (int): Fila de origen.
+            from_col (int): Columna de origen.
+            to_row (int): Fila de destino.
+            to_col (int): Columna de destino.
+
+        Realiza:
+            - Obtiene la pieza en la posición de origen y la coloca en la posición de destino.
+            - Limpia la posición de origen.
+        """
         origin = self.get_piece(from_row, from_col)
         self.set_piece(to_row, to_col, origin)
         self.set_piece(from_row, from_col, None)

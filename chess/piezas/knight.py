@@ -1,34 +1,51 @@
 from chess.piece import Piece
 
-#Los símbolos del caballo se guardan como atributos
-#Luego, en el método __str__, selecciona el símbolo correcto basado en el color de la pieza 
 class Knight(Piece):
+    """
+    Los símbolos del caballo se guardan como atributos.
+    Luego, en el método __str__, selecciona el símbolo correcto basado en el color de la pieza.
+    """
+
     def __init__(self, color, board):
+        """
+        Inicializa un caballo con el color especificado.
+
+        Parámetros:
+            color (str): El color del caballo ('WHITE' o 'BLACK').
+            board (Board): La referencia al tablero en el que se encuentra el caballo.
+        """
         super().__init__(color, board)
         self.__symbols__ = { "white": "♞" , "black": "♘" }  # Símbolos del caballo según su color.
         
-    # Devuelve el símbolo correspondiente del caballo según su color.
-    # Retorna:
-    # str: El símbolo del caballo (♞ para blanco, ♘ para negro).
     def __str__(self):
+        """
+        Devuelve el símbolo correspondiente del caballo según su color.
+
+        Retorna:
+            str: El símbolo del caballo (♞ para blanco, ♘ para negro).
+        """
         return self.__symbols__[self.__color__.lower()]
     
 
-    # Devuelve las posiciones posibles del caballo desde su posición actual.
-    # Parámetros:
-    # from_row (int): La fila actual del caballo.
-    # from_col (int): La columna actual del caballo.
-    # Retorna:
-    # list: Una lista de posiciones válidas en forma de coordenadas (fila, columna).
     def get_possible_positions(self, from_row, from_col):
-        # El caballo puede moverse en forma de "L"
+        """
+        Devuelve las posiciones posibles del caballo desde su posición actual.
+
+        El caballo puede moverse en forma de "L".
+
+        Parámetros:
+            from_row (int): La fila actual del caballo.
+            from_col (int): La columna actual del caballo.
+
+        Retorna:
+            list: Una lista de posiciones válidas en forma de coordenadas (fila, columna).
+        """
         possible_moves = [
             (from_row + 2, from_col + 1), (from_row + 2, from_col - 1),
             (from_row - 2, from_col + 1), (from_row - 2, from_col - 1),
             (from_row + 1, from_col + 2), (from_row + 1, from_col - 2),
             (from_row - 1, from_col + 2), (from_row - 1, from_col - 2)
         ]
-
         # Filtra las posiciones válidas dentro del tablero
         valid_moves = []
         for row, col in possible_moves:
