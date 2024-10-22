@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.58] - 21 / 10 / 2024 - Ligeros arreglos
+
+### Fixed
+
+- Arreglo en el método para validación de movimientos en chess
+- Arreglos para board sobre la representación visual del tablero
+
 ## [0.57] - 20 / 10 / 2024 - Subiendo todo a la rama main y cambiando la representación visual del tablero
 
 ### Added

@@ -57,18 +57,6 @@ class Board:
     #Asigna en el tablero (self.__positions__) la pieza correspondiente en su posición (x, y)
     #Se usa globals() para crear la instancia de la pieza
                 self.__positions__[x][y] = globals()[piece](color, self)
-       
-    '''def __str__(self):
-        
-        board_str = ""
-        for row in self.__positions__:
-            for cell in row:
-                if cell is not None:
-                    board_str += str(cell)
-                else:
-                    board_str += " "
-            board_str += "\n"
-        return board_str'''
    
     # Representa el tablero como una cadena para su visualización.
     # Retorna:
@@ -78,13 +66,13 @@ class Board:
         board_str += "  ----------------\n"
         
         for row_idx, row in enumerate(self.__positions__):
-            board_str += str(8 - row_idx) + "|"  # Encabezado de filas
+            board_str += str(row_idx) + "|"  # Encabezado de filas
             for cell in row:
                 if cell is not None:
                     board_str += str(cell) + " "
                 else:
                     board_str += ". "  # Punto para espacios vacíos
-            board_str += "|" + str(8 - row_idx) + "\n"  # Cierra la fila con el número de fila
+            board_str += "|" + str(row_idx) + "\n"  # Cierra la fila con el número de fila
         board_str += "  ----------------\n"
         board_str += "  0 1 2 3 4 5 6 7\n"  # Pie de columnas
         return board_str

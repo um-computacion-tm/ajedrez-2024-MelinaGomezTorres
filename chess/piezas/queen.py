@@ -29,5 +29,11 @@ class Queen(Piece):
     # to_col (int): La columna de destino.
     # Retorna:
     # bool: True si el movimiento es válido; False en caso contrario.
-    def __valid_positions_in_queen__(self, from_row, from_col, to_row, to_col):
+    def valid_positions(self, from_row, from_col, to_row, to_col):
         return self.__valid_positions__(from_row, from_col, to_row, to_col)
+    
+   
+
+
+
+
