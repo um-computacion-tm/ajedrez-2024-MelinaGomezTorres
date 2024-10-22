@@ -11,8 +11,17 @@ from chess.exceptions import OutOfBoard
 #Secuencia de caracteres representa el tablero de ajedrez en su posición inicial
 class TestBoard(unittest.TestCase):
     def test_str_board(self):
+        """
+        Verifica la representación en cadena del tablero inicial.
+
+        Compara la salida del método __str__ del tablero con
+        la representación esperada del tablero en su posición inicial.
+
+        Retorna:
+            None: Esta función no devuelve ningún valor, lanza una excepción
+            si la aserción falla.
+        """
         board = Board() 
-        # Verifica la representación en cadena del tablero inicial
         self.assertEqual(
             str(board),
             (
@@ -31,10 +40,28 @@ class TestBoard(unittest.TestCase):
             )
         )
     def setUp(self):
-        self.board = Board() # Inicializa el tablero para cada prueba
+        """
+        Inicializa el tablero para cada prueba.
+
+        Crea una nueva instancia de la clase Board que se usará
+        en cada prueba para asegurarse de que cada prueba tenga
+        un estado limpio.
+        """
+        self.board = Board() 
         
-#Verifica que las piezas de ajedrez en la clase "Board" se inicien y coloquen correctamente en sus posiciones correspondientes en el tablero
     def test_get_piece(self):
+        """
+        Verifica que las piezas de ajedrez se inicien y coloquen
+        correctamente en sus posiciones correspondientes en el tablero.
+
+        Comprueba que se pueden obtener las piezas de ajedrez en
+        sus posiciones iniciales y asegura que son instancias de
+        sus respectivas clases.
+
+        Retorna:
+            None: Esta función no devuelve ningún valor, lanza una excepción
+            si alguna de las aserciones falla.
+        """
         board = Board()
         rook = board.get_piece(0, 0)
         knight = board.get_piece(0, 1)
@@ -50,17 +77,38 @@ class TestBoard(unittest.TestCase):
         self.assertIsInstance(king, King)
         self.assertIsInstance(pawn, Pawn)
 
-# Asegura que el tablero de ajedrez esté bien iniciado y que los casilleros que deberían estar vacíos no contienen ninguna pieza
     def test_empty_square(self):
+        """
+        Asegura que el tablero de ajedrez esté bien inicializado
+        y que los casilleros que deberían estar vacíos no contienen
+        ninguna pieza.
+
+        Verifica que la casilla (4, 4) esté vacía y no contenga
+        ninguna pieza.
+
+        Retorna:
+            None: Esta función no devuelve ningún valor, lanza una excepción
+            si la aserción falla.
+        """
         board = Board()
         empty_square = board.get_piece(4, 4)
         self.assertIsNone(empty_square)
 
     def test_get_piece_out_of_range(self):
-        # Verifica que se lance una excepción al acceder a una posición fuera de límites
+        """
+        Verifica que se lance una excepción al acceder a una posición
+        fuera de límites.
+
+        Intenta acceder a una posición fuera del tablero y asegura
+        que se lanza la excepción OutOfBoard con el mensaje esperado.
+
+        Retorna:
+            None: Esta función no devuelve ningún valor, lanza una excepción
+            si la aserción falla.
+        """
         board = Board()  
         with self.assertRaises(OutOfBoard) as exc:
-            board.get_piece(10, 10)  # Intenta acceder a una posición fuera de los límites
+            board.get_piece(10, 10)  
 
         self.assertEqual(
             str(exc.exception),  # Compara el mensaje de la excepción directamente
@@ -68,7 +116,18 @@ class TestBoard(unittest.TestCase):
     )
         
     def test_capture_piece(self):
-        # Verifica que una pieza se capture correctamente
+        """
+        Verifica que una pieza se capture correctamente.
+
+        Coloca una torre blanca y un peón negro en el tablero,
+        mueve la torre a la posición del peón y verifica que
+        la torre se haya movido correctamente y que la posición
+        del peón ya esté vacía.
+
+        Retorna:
+            None: Esta función no devuelve ningún valor, lanza una excepción
+            si alguna de las aserciones falla.
+        """
         board = Board()
 
         # Se coloca una torre blanca en (0, 0) y un peón negro en (0, 1)
@@ -88,13 +147,19 @@ class TestBoard(unittest.TestCase):
         self.assertNotIsInstance(board.get_piece(0, 1), Pawn)
 
     def test_move_to_empty_square(self):
-        # Verifica que una pieza se mueva a una casilla vacía
-        board = Board()
-        
-        # Coloca una torre blanca en (0, 0)
-        board.set_piece(0, 0, Rook(color='WHITE', board=board))
+        """
+        Verifica que una pieza se mueva a una casilla vacía.
 
-        # Mueve la torre blanca a una casilla vacía (0, 1)
+        Coloca una torre blanca en la posición (0, 0) y verifica
+        que al moverla a una casilla vacía (0, 1) se haya movido
+        correctamente.
+
+        Retorna:
+            None: Esta función no devuelve ningún valor, lanza una excepción
+            si alguna de las aserciones falla.
+        """
+        board = Board()     
+        board.set_piece(0, 0, Rook(color='WHITE', board=board))
         board.move(0, 0, 0, 1)
 
         # Verifica que la torre se haya movido correctamente

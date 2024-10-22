@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [0.59] - 22 / 10 / 2024 - Arreglo en documentación y en king para su movimiento, agregando tests
+
+### Fixed
+
+- Arreglo en el método possible_moves, renombrandolo como 'get_possible_positions' en king y sus tests
+- Arreglando método move y has pieces en el chess
+- Arreglando la documentación al formato correcto
+
+### Added
+
+- Agregando tests para subir el porcentaje de coverage en cli
+- Agregando tests para subir el porcentaje de coverage en el chess
+
+
 ## [0.58] - 21 / 10 / 2024 - Ligeros arreglos
 
 ### Fixed
