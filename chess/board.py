@@ -57,18 +57,6 @@ class Board:
     #Asigna en el tablero (self.__positions__) la pieza correspondiente en su posición (x, y)
     #Se usa globals() para crear la instancia de la pieza
                 self.__positions__[x][y] = globals()[piece](color, self)
-       
-    '''def __str__(self):
-        
-        board_str = ""
-        for row in self.__positions__:
-            for cell in row:
-                if cell is not None:
-                    board_str += str(cell)
-                else:
-                    board_str += " "
-            board_str += "\n"
-        return board_str'''
    
     # Representa el tablero como una cadena para su visualización.
     # Retorna:

@@ -56,34 +56,6 @@ class TestBoard(unittest.TestCase):
         empty_square = board.get_piece(4, 4)
         self.assertIsNone(empty_square)
 
-    '''def test_move(self):
-        board = Board()  
-        rook = Rook(color='BLACK') 
-
-        board.set_piece(0, 0, rook)  # Coloca la torre negra en la posición inicial
-
-    # Mueve la torre de (0,0) a (0,1)
-        board.move(from_row=0, from_col=0, to_row=0, to_col=1)
-
-    # Verifica que la torre esté en la nueva posición
-        self.assertIsInstance(board.get_piece(0, 1), Rook)
-
-    # Verifica que la representación del tablero sea correcta
-        self.assertEqual(
-            str(board),
-        (
-            " ♖♗♕♔♗♘♖\n"
-            "♙♙♙♙♙♙♙♙\n"
-            "        \n"
-            "        \n"
-            "        \n"
-            "        \n"
-            "♟♟♟♟♟♟♟♟\n"
-            "♜♞♝♛♚♝♞♜\n"
-        )
-    )'''
-
-
     def test_get_piece_out_of_range(self):
         # Verifica que se lance una excepción al acceder a una posición fuera de límites
         board = Board()  
